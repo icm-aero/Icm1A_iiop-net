@@ -42,6 +42,7 @@ using Ch.Elca.Iiop.Util;
 using Ch.Elca.Iiop.CorbaObjRef;
 using Ch.Elca.Iiop.Interception;
 using Ch.Elca.Iiop.MessageHandling;
+using NUnit.Framework.Legacy;
 using omg.org.IOP;
 
 #if DEBUG_LOGFILE
@@ -1436,13 +1437,13 @@ namespace Ch.Elca.Iiop.Tests
         [Test]
         public void TestCorrectCreation()
         {
-            Assert.AreEqual(HOST, m_channelData.HostName, "Host");
-            Assert.AreEqual(PORT, m_channelData.Port, "Port");
-            Assert.AreEqual(0,
+            ClassicAssert.AreEqual(HOST, m_channelData.HostName, "Host");
+            ClassicAssert.AreEqual(PORT, m_channelData.Port, "Port");
+            ClassicAssert.AreEqual(0,
                                    m_channelData.AdditionalTaggedComponents.Length, "No components by default");
-            Assert.AreEqual(1,
+            ClassicAssert.AreEqual(1,
                                    m_channelData.ChannelUris.Length, "chan uris length");
-            Assert.AreEqual("iiop://" + HOST + ":" + PORT,
+            ClassicAssert.AreEqual("iiop://" + HOST + ":" + PORT,
                                    m_channelData.ChannelUris[0], "chan uri 1");
         }
 
@@ -1457,9 +1458,9 @@ namespace Ch.Elca.Iiop.Tests
                                                                           20000,
                                                                           new int[0])));
             m_channelData.AddAdditionalTaggedComponent(comp);
-            Assert.AreEqual(1,
+            ClassicAssert.AreEqual(1,
                                    m_channelData.AdditionalTaggedComponents.Length, "Component not added correctly");
-            Assert.AreEqual(comp.tag,
+            ClassicAssert.AreEqual(comp.tag,
                                    m_channelData.AdditionalTaggedComponents[0].tag, "Component not added correctly");
         }
 
@@ -1529,7 +1530,7 @@ namespace Ch.Elca.Iiop.Tests
                     RemotingServices.Connect(typeof(ISimpleCallTestOnChannel),
                                              "iiop://localhost:" + TEST_PORT + "/" + uri);
                 byte arg = 1;
-                Assert.AreEqual(1, proxy.EchoByte(arg));
+                ClassicAssert.AreEqual(1, proxy.EchoByte(arg));
             }
             finally
             {
@@ -1599,7 +1600,7 @@ namespace Ch.Elca.Iiop.Tests
             }
             catch (TRANSIENT tEx)
             {
-                Assert.AreEqual(
+                ClassicAssert.AreEqual(
                                        CorbaSystemExceptionCodes.TRANSIENT_CANTCONNECT,
                                        tEx.Minor, "minor code");
             }
@@ -1812,7 +1813,7 @@ namespace Ch.Elca.Iiop.Tests
                 RemotingServices.Connect(typeof(ISimpleCallTestOnChannel),
                                          m_targetIor.ToString());
             byte arg = 1;
-            Assert.AreEqual(1, proxy.EchoByte(arg));
+            ClassicAssert.AreEqual(1, proxy.EchoByte(arg));
         }
 
         [Test]
@@ -1823,19 +1824,28 @@ namespace Ch.Elca.Iiop.Tests
                 RemotingServices.Connect(typeof(ISimpleCallTestOnChannel),
                                         m_targetIor.ToString());
             byte arg = 1;
-            Assert.AreEqual(1, proxy.EchoByte(arg));
+            ClassicAssert.AreEqual(1, proxy.EchoByte(arg));
         }
 
         [Test]
-        [ExpectedException(typeof(TRANSIENT))]
+        //[ExpectedException(typeof(TRANSIENT))]
         public void TestExceededRetryForcedSync()
         {
             Setup("ExceededRt", 5);
-            ISimpleCallTestOnChannel proxy = (ISimpleCallTestOnChannel)
+            Assert.That(() =>
+                {
+                    ISimpleCallTestOnChannel proxy = (ISimpleCallTestOnChannel)
+                        RemotingServices.Connect(typeof(ISimpleCallTestOnChannel),
+                            m_targetIor.ToString());
+                    byte arg = 1;
+                    ClassicAssert.AreEqual(1, proxy.EchoByte(arg));
+                },
+                Throws.TypeOf<TRANSIENT>());
+           /* ISimpleCallTestOnChannel proxy = (ISimpleCallTestOnChannel)
                 RemotingServices.Connect(typeof(ISimpleCallTestOnChannel),
                                         m_targetIor.ToString());
             byte arg = 1;
-            Assert.AreEqual(1, proxy.EchoByte(arg));
+            ClassicAssert.AreEqual(1, proxy.EchoByte(arg));*/
         }
 
         delegate System.Byte TestEchoByteDelegate(System.Byte arg);
@@ -1854,7 +1864,7 @@ namespace Ch.Elca.Iiop.Tests
             IAsyncResult ar = ebd.BeginInvoke(arg, null, null);
             // wait for response
             System.Byte result = ebd.EndInvoke(ar);
-            Assert.AreEqual(arg, result);
+            ClassicAssert.AreEqual(arg, result);
         }
 
         [Test]
@@ -1871,25 +1881,31 @@ namespace Ch.Elca.Iiop.Tests
             IAsyncResult ar = ebd.BeginInvoke(arg, null, null);
             // wait for response
             System.Byte result = ebd.EndInvoke(ar);
-            Assert.AreEqual(arg, result);
+            ClassicAssert.AreEqual(arg, result);
         }
 
         [Test]
-        [ExpectedException(typeof(TRANSIENT))]
+       // [ExpectedException(typeof(TRANSIENT))]
         public void TestExceededRetryForcedASync()
         {
-            Setup("ExceededRtAsync", 5);
-            ISimpleCallTestOnChannel proxy = (ISimpleCallTestOnChannel)
-                RemotingServices.Connect(typeof(ISimpleCallTestOnChannel),
-                                        m_targetIor.ToString());
-            byte arg = 1;
-            TestEchoByteDelegate ebd =
-                new TestEchoByteDelegate(proxy.EchoByte);
-            // async call
-            IAsyncResult ar = ebd.BeginInvoke(arg, null, null);
-            // wait for response
-            System.Byte result = ebd.EndInvoke(ar);
-            Assert.AreEqual(arg, result);
+            Assert.That(() =>
+                {
+                    Setup("ExceededRtAsync", 5);
+                    ISimpleCallTestOnChannel proxy = (ISimpleCallTestOnChannel)
+                        RemotingServices.Connect(typeof(ISimpleCallTestOnChannel),
+                            m_targetIor.ToString());
+                    byte arg = 1;
+                    TestEchoByteDelegate ebd =
+                        new TestEchoByteDelegate(proxy.EchoByte);
+                    // async call
+                    IAsyncResult ar = ebd.BeginInvoke(arg, null, null);
+                    // wait for response
+                    System.Byte result = ebd.EndInvoke(ar);
+
+                    ClassicAssert.AreEqual(arg, result);
+                },
+                Throws.TypeOf<TRANSIENT>());
+        
         }
 
 
@@ -1901,7 +1917,7 @@ namespace Ch.Elca.Iiop.Tests
                 RemotingServices.Connect(typeof(ISimpleCallTestOnChannel),
                                          m_targetIiopLoc);
             byte arg = 1;
-            Assert.AreEqual(1, proxy.EchoByte(arg));
+            ClassicAssert.AreEqual(1, proxy.EchoByte(arg));
         }
 
     }

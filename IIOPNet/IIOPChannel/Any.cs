@@ -31,6 +31,7 @@
 using System;
 using Ch.Elca.Iiop.Idl;
 using Ch.Elca.Iiop.Util;
+using NUnit.Framework.Legacy;
 
 
 namespace omg.org.CORBA
@@ -198,9 +199,9 @@ namespace Ch.Elca.Iiop.Tests
             byte val = 11;
             omg.org.CORBA.TypeCode tc = new OctetTC();
             Any anyContainer = new Any(val, tc);
-            Assert.AreEqual(tc, anyContainer.Type, "wrong tc");
-            Assert.AreEqual(val, anyContainer.Value, "wrong val");
-            Assert.AreEqual(val, anyContainer.ClsValue, "wrong val");
+            ClassicAssert.AreEqual(tc, anyContainer.Type, "wrong tc");
+            ClassicAssert.AreEqual(val, anyContainer.Value, "wrong val");
+            ClassicAssert.AreEqual(val, anyContainer.ClsValue, "wrong val");
         }
 
         [Test]
@@ -215,7 +216,7 @@ namespace Ch.Elca.Iiop.Tests
             }
             catch (BAD_PARAM bp)
             {
-                Assert.AreEqual(456, bp.Minor);
+                ClassicAssert.AreEqual(456, bp.Minor);
             }
         }
 
@@ -225,10 +226,10 @@ namespace Ch.Elca.Iiop.Tests
             uint val = 11;
             omg.org.CORBA.TypeCode tc = new ULongTC();
             Any anyContainer = new Any(val, tc);
-            Assert.AreEqual(tc, anyContainer.Type, "wrong tc");
-            Assert.AreEqual(val, anyContainer.Value, "wrong val");
-            Assert.AreEqual((int)val, anyContainer.ClsValue, "wrong val");
-            Assert.AreEqual(ReflectionHelper.Int32Type,
+            ClassicAssert.AreEqual(tc, anyContainer.Type, "wrong tc");
+            ClassicAssert.AreEqual(val, anyContainer.Value, "wrong val");
+            ClassicAssert.AreEqual((int)val, anyContainer.ClsValue, "wrong val");
+            ClassicAssert.AreEqual(ReflectionHelper.Int32Type,
                                    anyContainer.ClsValue.GetType(), "wrong val type");
         }
 
@@ -238,10 +239,10 @@ namespace Ch.Elca.Iiop.Tests
             int val = 11;
             omg.org.CORBA.TypeCode tc = new ULongTC();
             Any anyContainer = new Any(val, tc);
-            Assert.AreEqual(tc, anyContainer.Type,"wrong tc");
-            Assert.AreEqual((uint)val, anyContainer.Value, "wrong val");
-            Assert.AreEqual(((uint)val).GetType(), anyContainer.Value.GetType(), "wrong val");
-            Assert.AreEqual(val, anyContainer.ClsValue, "wrong val");
+            ClassicAssert.AreEqual(tc, anyContainer.Type,"wrong tc");
+            ClassicAssert.AreEqual((uint)val, anyContainer.Value, "wrong val");
+            ClassicAssert.AreEqual(((uint)val).GetType(), anyContainer.Value.GetType(), "wrong val");
+            ClassicAssert.AreEqual(val, anyContainer.ClsValue, "wrong val");
         }
 
         [Test]
@@ -250,11 +251,11 @@ namespace Ch.Elca.Iiop.Tests
             int val = -11;
             omg.org.CORBA.TypeCode tc = new ULongTC();
             Any anyContainer = new Any(val, tc);
-            Assert.AreEqual(tc, anyContainer.Type, "wrong tc");
+            ClassicAssert.AreEqual(tc, anyContainer.Type, "wrong tc");
             // do an unchecked cast, overflow no issue here
-            Assert.AreEqual(unchecked((uint)val), anyContainer.Value, "wrong val");
-            Assert.AreEqual(unchecked((uint)val).GetType(), anyContainer.Value.GetType(), "wrong val");
-            Assert.AreEqual(val, anyContainer.ClsValue, "wrong val");
+            ClassicAssert.AreEqual(unchecked((uint)val), anyContainer.Value, "wrong val");
+            ClassicAssert.AreEqual(unchecked((uint)val).GetType(), anyContainer.Value.GetType(), "wrong val");
+            ClassicAssert.AreEqual(val, anyContainer.ClsValue, "wrong val");
         }
 
         [Test]
@@ -263,9 +264,9 @@ namespace Ch.Elca.Iiop.Tests
             int val = 11;
             omg.org.CORBA.TypeCode tc = new LongTC();
             Any anyContainer = new Any(val, tc);
-            Assert.AreEqual(tc, anyContainer.Type, "wrong tc");
-            Assert.AreEqual(val, anyContainer.Value, "wrong val");
-            Assert.AreEqual(val, anyContainer.ClsValue, "wrong val");
+            ClassicAssert.AreEqual(tc, anyContainer.Type, "wrong tc");
+            ClassicAssert.AreEqual(val, anyContainer.Value, "wrong val");
+            ClassicAssert.AreEqual(val, anyContainer.ClsValue, "wrong val");
         }
 
         [Test]
@@ -274,10 +275,10 @@ namespace Ch.Elca.Iiop.Tests
             ulong val = 11;
             omg.org.CORBA.TypeCode tc = new ULongLongTC();
             Any anyContainer = new Any(val, tc);
-            Assert.AreEqual(tc, anyContainer.Type, "wrong tc");
-            Assert.AreEqual(val, anyContainer.Value, "wrong val");
-            Assert.AreEqual((long)val, anyContainer.ClsValue, "wrong val");
-            Assert.AreEqual(ReflectionHelper.Int64Type,
+            ClassicAssert.AreEqual(tc, anyContainer.Type, "wrong tc");
+            ClassicAssert.AreEqual(val, anyContainer.Value, "wrong val");
+            ClassicAssert.AreEqual((long)val, anyContainer.ClsValue, "wrong val");
+            ClassicAssert.AreEqual(ReflectionHelper.Int64Type,
                                    anyContainer.ClsValue.GetType(), "wrong val type");
         }
 
@@ -287,10 +288,10 @@ namespace Ch.Elca.Iiop.Tests
             long val = 11;
             omg.org.CORBA.TypeCode tc = new ULongLongTC();
             Any anyContainer = new Any(val, tc);
-            Assert.AreEqual(tc, anyContainer.Type, "wrong tc");
-            Assert.AreEqual((ulong)val, anyContainer.Value, "wrong val");
-            Assert.AreEqual(((ulong)val).GetType(), anyContainer.Value.GetType(), "wrong val");
-            Assert.AreEqual(val, anyContainer.ClsValue, "wrong val");
+            ClassicAssert.AreEqual(tc, anyContainer.Type, "wrong tc");
+            ClassicAssert.AreEqual((ulong)val, anyContainer.Value, "wrong val");
+            ClassicAssert.AreEqual(((ulong)val).GetType(), anyContainer.Value.GetType(), "wrong val");
+            ClassicAssert.AreEqual(val, anyContainer.ClsValue, "wrong val");
         }
 
         [Test]
@@ -299,11 +300,11 @@ namespace Ch.Elca.Iiop.Tests
             long val = -11;
             omg.org.CORBA.TypeCode tc = new ULongLongTC();
             Any anyContainer = new Any(val, tc);
-            Assert.AreEqual(tc, anyContainer.Type, "wrong tc");
+            ClassicAssert.AreEqual(tc, anyContainer.Type, "wrong tc");
             // do an unchecked cast, overflow no issue here
-            Assert.AreEqual(unchecked((ulong)val), anyContainer.Value, "wrong val");
-            Assert.AreEqual(unchecked((ulong)val).GetType(), anyContainer.Value.GetType(), "wrong val");
-            Assert.AreEqual(val, anyContainer.ClsValue, "wrong val");
+            ClassicAssert.AreEqual(unchecked((ulong)val), anyContainer.Value, "wrong val");
+            ClassicAssert.AreEqual(unchecked((ulong)val).GetType(), anyContainer.Value.GetType(), "wrong val");
+            ClassicAssert.AreEqual(val, anyContainer.ClsValue, "wrong val");
         }
 
         [Test]
@@ -312,10 +313,10 @@ namespace Ch.Elca.Iiop.Tests
             ushort val = 11;
             omg.org.CORBA.TypeCode tc = new UShortTC();
             Any anyContainer = new Any(val, tc);
-            Assert.AreEqual(tc, anyContainer.Type, "wrong tc");
-            Assert.AreEqual(val, anyContainer.Value, "wrong val");
-            Assert.AreEqual((short)val, anyContainer.ClsValue, "wrong val");
-            Assert.AreEqual(ReflectionHelper.Int16Type,
+            ClassicAssert.AreEqual(tc, anyContainer.Type, "wrong tc");
+            ClassicAssert.AreEqual(val, anyContainer.Value, "wrong val");
+            ClassicAssert.AreEqual((short)val, anyContainer.ClsValue, "wrong val");
+            ClassicAssert.AreEqual(ReflectionHelper.Int16Type,
                                    anyContainer.ClsValue.GetType(), "wrong val type");
         }
 
@@ -325,10 +326,10 @@ namespace Ch.Elca.Iiop.Tests
             short val = 11;
             omg.org.CORBA.TypeCode tc = new UShortTC();
             Any anyContainer = new Any(val, tc);
-            Assert.AreEqual(tc, anyContainer.Type, "wrong tc");
-            Assert.AreEqual((ushort)val, anyContainer.Value, "wrong val");
-            Assert.AreEqual(((ushort)val).GetType(), anyContainer.Value.GetType(), "wrong val");
-            Assert.AreEqual(val, anyContainer.ClsValue, "wrong val");
+            ClassicAssert.AreEqual(tc, anyContainer.Type, "wrong tc");
+            ClassicAssert.AreEqual((ushort)val, anyContainer.Value, "wrong val");
+            ClassicAssert.AreEqual(((ushort)val).GetType(), anyContainer.Value.GetType(), "wrong val");
+            ClassicAssert.AreEqual(val, anyContainer.ClsValue, "wrong val");
         }
 
         [Test]
@@ -337,11 +338,11 @@ namespace Ch.Elca.Iiop.Tests
             short val = -11;
             omg.org.CORBA.TypeCode tc = new UShortTC();
             Any anyContainer = new Any(val, tc);
-            Assert.AreEqual(tc, anyContainer.Type, "wrong tc");
+            ClassicAssert.AreEqual(tc, anyContainer.Type, "wrong tc");
             // do an unchecked cast, overflow no issue here
-            Assert.AreEqual(unchecked((ushort)val), anyContainer.Value, "wrong val");
-            Assert.AreEqual(unchecked((ushort)val).GetType(), anyContainer.Value.GetType(), "wrong val");
-            Assert.AreEqual(val, anyContainer.ClsValue, "wrong val");
+            ClassicAssert.AreEqual(unchecked((ushort)val), anyContainer.Value, "wrong val");
+            ClassicAssert.AreEqual(unchecked((ushort)val).GetType(), anyContainer.Value.GetType(), "wrong val");
+            ClassicAssert.AreEqual(val, anyContainer.ClsValue, "wrong val");
         }
 
         [Test]
@@ -350,10 +351,10 @@ namespace Ch.Elca.Iiop.Tests
             sbyte val = 11;
             omg.org.CORBA.TypeCode tc = new OctetTC();
             Any anyContainer = new Any(val, tc);
-            Assert.AreEqual(tc, anyContainer.Type, "wrong tc");
-            Assert.AreEqual((byte)val, anyContainer.Value, "wrong val");
-            Assert.AreEqual((byte)val, anyContainer.ClsValue, "wrong val");
-            Assert.AreEqual(ReflectionHelper.ByteType,
+            ClassicAssert.AreEqual(tc, anyContainer.Type, "wrong tc");
+            ClassicAssert.AreEqual((byte)val, anyContainer.Value, "wrong val");
+            ClassicAssert.AreEqual((byte)val, anyContainer.ClsValue, "wrong val");
+            ClassicAssert.AreEqual(ReflectionHelper.ByteType,
                                    anyContainer.ClsValue.GetType(), "wrong val type");
         }
 
@@ -363,11 +364,11 @@ namespace Ch.Elca.Iiop.Tests
             sbyte val = -11;
             omg.org.CORBA.TypeCode tc = new OctetTC();
             Any anyContainer = new Any(val, tc);
-            Assert.AreEqual(tc, anyContainer.Type, "wrong tc");
+            ClassicAssert.AreEqual(tc, anyContainer.Type, "wrong tc");
             // do an unchecked cast, overflow no issue here
-            Assert.AreEqual(unchecked((byte)val), anyContainer.Value, "wrong val");
-            Assert.AreEqual(unchecked((byte)val), anyContainer.ClsValue, "wrong val");
-            Assert.AreEqual(ReflectionHelper.ByteType,
+            ClassicAssert.AreEqual(unchecked((byte)val), anyContainer.Value, "wrong val");
+            ClassicAssert.AreEqual(unchecked((byte)val), anyContainer.ClsValue, "wrong val");
+            ClassicAssert.AreEqual(ReflectionHelper.ByteType,
                                    anyContainer.ClsValue.GetType(), "wrong val type");
         }
 
@@ -379,13 +380,13 @@ namespace Ch.Elca.Iiop.Tests
                                new StringTC());
             string toBoxInto = "test";
             Any anyContainer = new Any(toBoxInto, tc);
-            Assert.AreEqual(tc, anyContainer.Type, "wrong tc");
-            Assert.AreEqual(ReflectionHelper.StringValueType,
+            ClassicAssert.AreEqual(tc, anyContainer.Type, "wrong tc");
+            ClassicAssert.AreEqual(ReflectionHelper.StringValueType,
                                    anyContainer.ValueInternalRepresenation.GetType(), "wrong val type");
 
-            Assert.AreEqual(toBoxInto,
+            ClassicAssert.AreEqual(toBoxInto,
                                    anyContainer.Value, "wrong val");
-            Assert.AreEqual(ReflectionHelper.StringType,
+            ClassicAssert.AreEqual(ReflectionHelper.StringType,
                                    anyContainer.Value.GetType(), "wrong val type");
 
         }
@@ -398,15 +399,15 @@ namespace Ch.Elca.Iiop.Tests
                                new StringTC());
             StringValue toBoxInto = new StringValue("test");
             Any anyContainer = new Any(toBoxInto, tc);
-            Assert.AreEqual(tc, anyContainer.Type, "wrong tc");
-            Assert.AreEqual(toBoxInto,
+            ClassicAssert.AreEqual(tc, anyContainer.Type, "wrong tc");
+            ClassicAssert.AreEqual(toBoxInto,
                                    anyContainer.ValueInternalRepresenation, "wrong val");
-            Assert.AreEqual(ReflectionHelper.StringValueType,
+            ClassicAssert.AreEqual(ReflectionHelper.StringValueType,
                                    anyContainer.ValueInternalRepresenation.GetType(), "wrong val type");
 
-            Assert.AreEqual(toBoxInto.Unbox(),
+            ClassicAssert.AreEqual(toBoxInto.Unbox(),
                                    anyContainer.Value, "wrong val");
-            Assert.AreEqual(ReflectionHelper.StringType,
+            ClassicAssert.AreEqual(ReflectionHelper.StringType,
                                    anyContainer.Value.GetType(), "wrong val type");
         }
 
@@ -420,7 +421,7 @@ namespace Ch.Elca.Iiop.Tests
             }
             catch (BAD_PARAM bpEx)
             {
-                Assert.IsTrue(bpEx.Message.StartsWith("CORBA system exception : omg.org.CORBA.BAD_PARAM [The given instance 1.0 of type"), "exception message");
+                ClassicAssert.IsTrue(bpEx.Message.StartsWith("CORBA system exception : omg.org.CORBA.BAD_PARAM [The given instance 1.0 of type"), "exception message");
             }
         }
 

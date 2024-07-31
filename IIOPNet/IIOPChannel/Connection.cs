@@ -35,6 +35,7 @@ using System.Threading;
 using System.Runtime.Remoting.Messaging;
 using System.Diagnostics;
 using Ch.Elca.Iiop.Services;
+using NUnit.Framework.Legacy;
 using omg.org.CORBA;
 
 namespace Ch.Elca.Iiop
@@ -610,9 +611,9 @@ namespace Ch.Elca.Iiop.Tests
         {
             GiopConnectionDesc desc =
                 new GiopConnectionDesc(null, null);
-            Assert.IsTrue(
+            ClassicAssert.IsTrue(
                              !desc.IsCodeSetNegotiated(), "Codeset not negotiated at construction time");
-            Assert.IsTrue(
+            ClassicAssert.IsTrue(
                              !desc.IsCodeSetDefined(), "No codeset user defined at construction time");
         }
 
@@ -621,7 +622,7 @@ namespace Ch.Elca.Iiop.Tests
         {
             GiopConnectionDesc desc =
                 new GiopConnectionDesc(null, null);
-            Assert.IsTrue(
+            ClassicAssert.IsTrue(
                              !desc.IsCodeSetDefined(), "No codeset user defined at construction time");
             try
             {
@@ -651,11 +652,11 @@ namespace Ch.Elca.Iiop.Tests
             GiopConnectionDesc desc =
                 new GiopConnectionDesc(null, null);
             desc.SetNegotiatedCodeSets(charSet, wcharSet);
-            Assert.IsTrue(
+            ClassicAssert.IsTrue(
                              desc.IsCodeSetNegotiated(),"Codeset negotiated");
-            Assert.AreEqual(charSet, desc.CharSet,"char set");
-            Assert.AreEqual(wcharSet, desc.WCharSet,"wchar set");
-            Assert.IsTrue(desc.IsCodeSetDefined(),"Codeset user defined");
+            ClassicAssert.AreEqual(charSet, desc.CharSet,"char set");
+            ClassicAssert.AreEqual(wcharSet, desc.WCharSet,"wchar set");
+            ClassicAssert.IsTrue(desc.IsCodeSetDefined(),"Codeset user defined");
 
         }
 
@@ -665,9 +666,9 @@ namespace Ch.Elca.Iiop.Tests
             GiopConnectionDesc desc =
                 new GiopConnectionDesc(null, null);
             desc.SetCodeSetNegotiated();
-            Assert.IsTrue(
+            ClassicAssert.IsTrue(
                              desc.IsCodeSetNegotiated(),"Codeset negotiated");
-            Assert.IsTrue(
+            ClassicAssert.IsTrue(
                              !desc.IsCodeSetDefined(),"Codeset not user defined");
         }
 

@@ -41,6 +41,7 @@ using Ch.Elca.Iiop.Marshalling;
 using omg.org.CORBA;
 using omg.org.IOP;
 using System.Collections.Generic;
+using NUnit.Framework.Legacy;
 
 namespace Ch.Elca.Iiop.CorbaObjRef
 {
@@ -782,60 +783,60 @@ namespace Ch.Elca.Iiop.Tests
         {
             string iorString = "IOR:0000000000000024524d493a48656c6c6f496e746572666163653a3030303030303030303030303030303000000000010000000000000050000102000000000c31302e34302e32302e3531001f9500000000000853617948656C6C6F0000000100000001000000200000000000010001000000020501000100010020000101090000000100010100";
             Ior ior = new Ior(iorString);
-            Assert.IsTrue(ior.Profiles.Length > 0, "nr of profiles");
-            Assert.AreEqual(TAG_INTERNET_IOP.ConstVal, ior.Profiles[0].ProfileId, "first profile type");
+            ClassicAssert.IsTrue(ior.Profiles.Length > 0, "nr of profiles");
+            ClassicAssert.AreEqual(TAG_INTERNET_IOP.ConstVal, ior.Profiles[0].ProfileId, "first profile type");
             IInternetIiopProfile iiopProf = (IInternetIiopProfile)ior.Profiles[0];
-            Assert.AreEqual("10.40.20.51", iiopProf.HostName);
-            Assert.AreEqual(8085, iiopProf.Port);
-            Assert.AreEqual(1, iiopProf.Version.Major);
-            Assert.AreEqual(2, iiopProf.Version.Minor);
+            ClassicAssert.AreEqual("10.40.20.51", iiopProf.HostName);
+            ClassicAssert.AreEqual(8085, iiopProf.Port);
+            ClassicAssert.AreEqual(1, iiopProf.Version.Major);
+            ClassicAssert.AreEqual(2, iiopProf.Version.Minor);
             byte[] oid = new byte[] { 0x53, 0x61, 0x79, 0x48, 0x65, 0x6C, 0x6C, 0x6F };
             CheckIorKey(oid, iiopProf.ObjectKey);
 
 
             iorString = "IOR:0000000000000024524d493a48656c6c6f496e746572666163653a3030303030303030303030303030303000000000010000000000000050000102000000000c31302e34302e32302e3531007f9500000000000853617948656C6C6F0000000100000001000000200000000000010001000000020501000100010020000101090000000100010100";
             ior = new Ior(iorString);
-            Assert.IsTrue(ior.Profiles.Length > 0, "nr of profiles");
-            Assert.AreEqual(TAG_INTERNET_IOP.ConstVal, ior.Profiles[0].ProfileId, "first profile type");
+            ClassicAssert.IsTrue(ior.Profiles.Length > 0, "nr of profiles");
+            ClassicAssert.AreEqual(TAG_INTERNET_IOP.ConstVal, ior.Profiles[0].ProfileId, "first profile type");
             iiopProf = (IInternetIiopProfile)ior.Profiles[0];
-            Assert.AreEqual("10.40.20.51", iiopProf.HostName);
-            Assert.AreEqual(32661, iiopProf.Port);
-            Assert.AreEqual(1, iiopProf.Version.Major);
-            Assert.AreEqual(2, iiopProf.Version.Minor);
+            ClassicAssert.AreEqual("10.40.20.51", iiopProf.HostName);
+            ClassicAssert.AreEqual(32661, iiopProf.Port);
+            ClassicAssert.AreEqual(1, iiopProf.Version.Major);
+            ClassicAssert.AreEqual(2, iiopProf.Version.Minor);
             oid = new byte[] { 0x53, 0x61, 0x79, 0x48, 0x65, 0x6C, 0x6C, 0x6F };
             CheckIorKey(oid, iiopProf.ObjectKey);
 
             iorString = "IOR:0000000000000024524d493a48656c6c6f496e746572666163653a3030303030303030303030303030303000000000010000000000000050000102000000000c31302e34302e32302e3531008f9500000000000853617948656C6C6F0000000100000001000000200000000000010001000000020501000100010020000101090000000100010100";
             ior = new Ior(iorString);
-            Assert.IsTrue(ior.Profiles.Length > 0, "nr of profiles");
-            Assert.AreEqual(TAG_INTERNET_IOP.ConstVal, ior.Profiles[0].ProfileId, "first profile type");
+            ClassicAssert.IsTrue(ior.Profiles.Length > 0, "nr of profiles");
+            ClassicAssert.AreEqual(TAG_INTERNET_IOP.ConstVal, ior.Profiles[0].ProfileId, "first profile type");
             iiopProf = (IInternetIiopProfile)ior.Profiles[0];
-            Assert.AreEqual("10.40.20.51", iiopProf.HostName);
-            Assert.AreEqual(36757, iiopProf.Port);
-            Assert.AreEqual(1, iiopProf.Version.Major);
-            Assert.AreEqual(2, iiopProf.Version.Minor);
+            ClassicAssert.AreEqual("10.40.20.51", iiopProf.HostName);
+            ClassicAssert.AreEqual(36757, iiopProf.Port);
+            ClassicAssert.AreEqual(1, iiopProf.Version.Major);
+            ClassicAssert.AreEqual(2, iiopProf.Version.Minor);
             oid = new byte[] { 0x53, 0x61, 0x79, 0x48, 0x65, 0x6C, 0x6C, 0x6F };
             CheckIorKey(oid, iiopProf.ObjectKey);
 
             iorString = "IOR:0000000000000024524d493a48656c6c6f496e746572666163653a3030303030303030303030303030303000000000010000000000000050000102000000000c31302e34302e32302e353100ffff00000000000853617948656C6C6F0000000100000001000000200000000000010001000000020501000100010020000101090000000100010100";
             ior = new Ior(iorString);
-            Assert.IsTrue(ior.Profiles.Length > 0, "nr of profiles");
-            Assert.AreEqual(TAG_INTERNET_IOP.ConstVal, ior.Profiles[0].ProfileId, "first profile type");
+            ClassicAssert.IsTrue(ior.Profiles.Length > 0, "nr of profiles");
+            ClassicAssert.AreEqual(TAG_INTERNET_IOP.ConstVal, ior.Profiles[0].ProfileId, "first profile type");
             iiopProf = (IInternetIiopProfile)ior.Profiles[0];
-            Assert.AreEqual("10.40.20.51", iiopProf.HostName);
-            Assert.AreEqual(65535, iiopProf.Port);
-            Assert.AreEqual(1, iiopProf.Version.Major);
-            Assert.AreEqual(2, iiopProf.Version.Minor);
+            ClassicAssert.AreEqual("10.40.20.51", iiopProf.HostName);
+            ClassicAssert.AreEqual(65535, iiopProf.Port);
+            ClassicAssert.AreEqual(1, iiopProf.Version.Major);
+            ClassicAssert.AreEqual(2, iiopProf.Version.Minor);
             oid = new byte[] { 0x53, 0x61, 0x79, 0x48, 0x65, 0x6C, 0x6C, 0x6F };
             CheckIorKey(oid, iiopProf.ObjectKey);
         }
 
         private void CheckIorKey(byte[] expected, byte[] actual)
         {
-            Assert.AreEqual(expected.Length, actual.Length, "wrong id length");
+            ClassicAssert.AreEqual(expected.Length, actual.Length, "wrong id length");
             for (int i = 0; i < expected.Length; i++)
             {
-                Assert.AreEqual(expected[i], actual[i], "wrong element nr " + i);
+                ClassicAssert.AreEqual(expected[i], actual[i], "wrong element nr " + i);
             }
         }
 
@@ -844,14 +845,14 @@ namespace Ch.Elca.Iiop.Tests
         {
             string iorString = "IOR:000000000000001b49444c3a636d6956322f5573657241636365737356323a312e3000020000000210ca1000000000650000000800000008646576312d73660033de6f8e0000004d000000020000000855736572504f41000000001043415355736572416363657373563200c3fbedfb0000000e007c4c51000000fd57aacdaf801a0000000e007c4c51000000fd57aacdaf80120000009400000000000000980001023100000008646576312d736600200b00020000004d000000020000000855736572504f41000000001043415355736572416363657373563200c3fbedfb0000000e007c4c51000000fd57aacdaf801a0000000e007c4c51000000fd57aacdaf8012000000140000000200000002000000140000000400000001000000230000000400000001000000000000000800000000cb0e0001";
             Ior ior = new Ior(iorString);
-            Assert.AreEqual("IDL:cmiV2/UserAccessV2:1.0", ior.TypID, "wrong RepositoryId");
+            ClassicAssert.AreEqual("IDL:cmiV2/UserAccessV2:1.0", ior.TypID, "wrong RepositoryId");
             IInternetIiopProfile iiopProf = ior.FindInternetIiopProfile();
-            Assert.NotNull(iiopProf, "iiop ior profile not found");
-            Assert.AreEqual("dev1-sf", iiopProf.HostName, "wrong hostname");
-            Assert.AreEqual(8203, iiopProf.Port, "wrong port");
-            Assert.AreEqual(1, iiopProf.Version.Major, "wrong major");
-            Assert.AreEqual(2, iiopProf.Version.Minor, "wrong minor");
-            Assert.AreEqual(2, ior.Profiles.Length, "wrong number of profiles");
+            ClassicAssert.NotNull(iiopProf, "iiop ior profile not found");
+            ClassicAssert.AreEqual("dev1-sf", iiopProf.HostName, "wrong hostname");
+            ClassicAssert.AreEqual(8203, iiopProf.Port, "wrong port");
+            ClassicAssert.AreEqual(1, iiopProf.Version.Major, "wrong major");
+            ClassicAssert.AreEqual(2, iiopProf.Version.Minor, "wrong minor");
+            ClassicAssert.AreEqual(2, ior.Profiles.Length, "wrong number of profiles");
         }
 
         [Test]
@@ -862,7 +863,7 @@ namespace Ch.Elca.Iiop.Tests
                                 : "IOR:0000000000000024524d493a48656c6c6f496e746572666163653a3030303030303030303030303030303000000000010000000000000050000102000000000c31302e34302e32302e3531001f9500000000000853617948656C6C6F0000000100000001000000200000000000010001000000020501000100010020000101090000000100010100";
             Ior ior = new Ior(iorString);
             string recreated = ior.ToString();
-            Assert.AreEqual(iorString.ToLower(),
+            ClassicAssert.AreEqual(iorString.ToLower(),
                                    recreated.ToLower(), "ior not recreated");
 
             string iorString2 = BitConverter.IsLittleEndian
@@ -870,7 +871,7 @@ namespace Ch.Elca.Iiop.Tests
                                  : "IOR:000000000000001b49444c3a636d6956322f5573657241636365737356323a312e3000000000000210ca1000000000650000000800000008646576312d73660033de6f8e0000004d000000020000000855736572504f41000000001043415355736572416363657373563200c3fbedfb0000000e007c4c51000000fd57aacdaf801a0000000e007c4c51000000fd57aacdaf80120000000000000000000000980001020000000008646576312d736600200b00000000004d000000020000000855736572504f41000000001043415355736572416363657373563200c3fbedfb0000000e007c4c51000000fd57aacdaf801a0000000e007c4c51000000fd57aacdaf8012000000000000000200000002000000140000000400000001000000230000000400000001000000000000000800000000cb0e0001";
             Ior ior2 = new Ior(iorString2);
             string recreated2 = ior2.ToString();
-            Assert.AreEqual(iorString2.ToLower(),
+            ClassicAssert.AreEqual(iorString2.ToLower(),
                                    recreated2.ToLower(), "ior2 not recreated");
         }
 
@@ -879,14 +880,14 @@ namespace Ch.Elca.Iiop.Tests
         {
             string iorString = "IOR:000000000000003749444C3A43682F456C63612F49696F702F5475746F7269616C2F47657474696E67537461727465642F4164646572496D706C3A312E30000000000001000000000000005C000102000000000D3139322E3136382E312E33370000000000000005616464657200000000000002000000010000001C0000000000010001000000010001002000010109000000010001010000000014000000080000006000601F97";
             Ior ior = new Ior(iorString);
-            Assert.AreEqual(1, ior.Profiles.Length, "wrong number of profiles");
-            Assert.AreEqual(TAG_INTERNET_IOP.ConstVal, ior.Profiles[0].ProfileId, "first profile type");
+            ClassicAssert.AreEqual(1, ior.Profiles.Length, "wrong number of profiles");
+            ClassicAssert.AreEqual(TAG_INTERNET_IOP.ConstVal, ior.Profiles[0].ProfileId, "first profile type");
             InternetIiopProfile iiopProf = (InternetIiopProfile)ior.Profiles[0];
-            Assert.AreEqual("192.168.1.37", iiopProf.HostName, "wrong hostname");
-            Assert.AreEqual(1, iiopProf.Version.Major, "wrong major");
-            Assert.AreEqual(2, iiopProf.Version.Minor, "wrong minor");
-            Assert.AreEqual(2, iiopProf.TaggedComponents.Count, "wrong number of components in profile");
-            Assert.NotNull(iiopProf.TaggedComponents.GetComponentData(TAG_SSL_SEC_TRANS.ConstVal, m_codec,
+            ClassicAssert.AreEqual("192.168.1.37", iiopProf.HostName, "wrong hostname");
+            ClassicAssert.AreEqual(1, iiopProf.Version.Major, "wrong major");
+            ClassicAssert.AreEqual(2, iiopProf.Version.Minor, "wrong minor");
+            ClassicAssert.AreEqual(2, iiopProf.TaggedComponents.Count, "wrong number of components in profile");
+            ClassicAssert.NotNull(iiopProf.TaggedComponents.GetComponentData(TAG_SSL_SEC_TRANS.ConstVal, m_codec,
                                                                                Ch.Elca.Iiop.Security.Ssl.SSLComponentData.TypeCode), "no ssl tagged component found");
         }
 
@@ -933,12 +934,12 @@ namespace Ch.Elca.Iiop.Tests
         [Test]
         public void TestDefaultProfileCreateion()
         {
-            Assert.AreEqual(m_version, m_profile.Version, "profile version wrong");
-            Assert.AreEqual(m_hostName, m_profile.HostName, "profile Hostname wrong");
-            Assert.AreEqual(m_port, m_profile.Port, "profile port wrong");
-            Assert.NotNull(m_profile.ObjectKey, "profile key null");
-            Assert.AreEqual(m_objectKey.Length, m_profile.ObjectKey.Length, "profile key wrong");
-            Assert.AreEqual(0, m_profile.TaggedComponents.Count,"tagged components empty");
+            ClassicAssert.AreEqual(m_version, m_profile.Version, "profile version wrong");
+            ClassicAssert.AreEqual(m_hostName, m_profile.HostName, "profile Hostname wrong");
+            ClassicAssert.AreEqual(m_port, m_profile.Port, "profile port wrong");
+            ClassicAssert.NotNull(m_profile.ObjectKey, "profile key null");
+            ClassicAssert.AreEqual(m_objectKey.Length, m_profile.ObjectKey.Length, "profile key wrong");
+            ClassicAssert.AreEqual(0, m_profile.TaggedComponents.Count,"tagged components empty");
         }
 
         [Test]
@@ -953,15 +954,15 @@ namespace Ch.Elca.Iiop.Tests
                 new TaggedComponent(TAG_CODE_SETS.ConstVal,
                                     m_codec.encode_value(codeSetCompVal));
             m_profile.AddTaggedComponent(codeSetComponent);
-            Assert.AreEqual(1, m_profile.TaggedComponents.Count, "tagged components one entry");
-            Assert.IsTrue(m_profile.ContainsTaggedComponent(TAG_CODE_SETS.ConstVal), "not found code set component");
+            ClassicAssert.AreEqual(1, m_profile.TaggedComponents.Count, "tagged components one entry");
+            ClassicAssert.IsTrue(m_profile.ContainsTaggedComponent(TAG_CODE_SETS.ConstVal), "not found code set component");
             CodeSetComponentData retrieved =
                 (CodeSetComponentData)m_profile.TaggedComponents.GetComponentData(TAG_CODE_SETS.ConstVal,
                                                                        m_codec,
                                                                        CodeSetComponentData.TypeCode);
-            Assert.NotNull(retrieved, "not found code set component");
-            Assert.AreEqual(codeSetCompVal.NativeCharSet, retrieved.NativeCharSet, "char set");
-            Assert.AreEqual(codeSetCompVal.NativeWCharSet, retrieved.NativeWCharSet, "wchar set");
+            ClassicAssert.NotNull(retrieved, "not found code set component");
+            ClassicAssert.AreEqual(codeSetCompVal.NativeCharSet, retrieved.NativeCharSet, "char set");
+            ClassicAssert.AreEqual(codeSetCompVal.NativeWCharSet, retrieved.NativeWCharSet, "wchar set");
         }
 
     }

@@ -37,6 +37,7 @@ using Ch.Elca.Iiop;
 using Ch.Elca.Iiop.CorbaObjRef;
 using Ch.Elca.Iiop.Util;
 using Ch.Elca.Iiop.Interception;
+using NUnit.Framework.Legacy;
 using omg.org.PortableInterceptor;
 using omg.org.IOP;
 
@@ -886,8 +887,8 @@ namespace Ch.Elca.Iiop.Tests
             CodeSetComponentData codeSetData = (CodeSetComponentData)
                 m_codec.decode_value(defaultComponent.component_data,
                                      CodeSetComponentData.TypeCode);
-            Assert.IsTrue(Enum.IsDefined(typeof(CharSet), codeSetData.NativeCharSet));
-            Assert.IsTrue(Enum.IsDefined(typeof(WCharSet), codeSetData.NativeWCharSet));
+            ClassicAssert.IsTrue(Enum.IsDefined(typeof(CharSet), codeSetData.NativeCharSet));
+            ClassicAssert.IsTrue(Enum.IsDefined(typeof(WCharSet), codeSetData.NativeWCharSet));
 
             IOrbServices orbServices = OrbServices.GetSingleton();
             try
@@ -924,7 +925,7 @@ namespace Ch.Elca.Iiop.Tests
         {
             int longArg = 1;
             omg.org.CORBA.TypeCode long_TC = m_orb.create_tc_for(longArg);
-            Assert.AreEqual(TCKind.tk_long,
+            ClassicAssert.AreEqual(TCKind.tk_long,
                                    long_TC.kind(), "created tc kind");
         }
 
@@ -936,9 +937,9 @@ namespace Ch.Elca.Iiop.Tests
             TypeCodeImpl aliasedTC = (TypeCodeImpl)m_orb.create_long_tc();
             omg.org.CORBA.TypeCode alias_TC =
                 m_orb.create_alias_tc(aliasRepId, name, aliasedTC);
-            Assert.AreEqual(aliasRepId, alias_TC.id(), "alias id");
-            Assert.AreEqual(TCKind.tk_alias, alias_TC.kind(), "alias kind");
-            Assert.AreEqual(aliasedTC.GetClsForTypeCode(),
+            ClassicAssert.AreEqual(aliasRepId, alias_TC.id(), "alias id");
+            ClassicAssert.AreEqual(TCKind.tk_alias, alias_TC.kind(), "alias kind");
+            ClassicAssert.AreEqual(aliasedTC.GetClsForTypeCode(),
                                    ((TypeCodeImpl)alias_TC).GetClsForTypeCode(), "alias cls type");
         }
 
@@ -948,8 +949,8 @@ namespace Ch.Elca.Iiop.Tests
             TypeCodeImpl seqMemberType = (TypeCodeImpl)m_orb.create_octet_tc();
             omg.org.CORBA.TypeCode seqOfOctet_TC =
                 m_orb.create_sequence_tc(0, seqMemberType);
-            Assert.AreEqual(TCKind.tk_sequence, seqOfOctet_TC.kind(), "sequence kind");
-            Assert.AreEqual(seqMemberType.GetClsForTypeCode(),
+            ClassicAssert.AreEqual(TCKind.tk_sequence, seqOfOctet_TC.kind(), "sequence kind");
+            ClassicAssert.AreEqual(seqMemberType.GetClsForTypeCode(),
                                    ((TypeCodeImpl)seqOfOctet_TC.content_type()).GetClsForTypeCode(), "sequence member type");
         }
 
@@ -963,11 +964,11 @@ namespace Ch.Elca.Iiop.Tests
             omg.org.CORBA.TypeCode tc =
                 m_orb.create_struct_tc(repId, name,
                                        new StructMember[] { m1 });
-            Assert.AreEqual(repId, tc.id(), "id");
-            Assert.AreEqual(TCKind.tk_struct, tc.kind(), "king");
-            Assert.AreEqual(1, tc.member_count(), "nr of members");
-            Assert.AreEqual(m1.name, tc.member_name(0), "member m1 name");
-            Assert.AreEqual(m1.type.kind(), tc.member_type(0).kind(), "member m1 type");
+            ClassicAssert.AreEqual(repId, tc.id(), "id");
+            ClassicAssert.AreEqual(TCKind.tk_struct, tc.kind(), "king");
+            ClassicAssert.AreEqual(1, tc.member_count(), "nr of members");
+            ClassicAssert.AreEqual(m1.name, tc.member_name(0), "member m1 name");
+            ClassicAssert.AreEqual(m1.type.kind(), tc.member_type(0).kind(), "member m1 type");
         }
 
         [Test]
@@ -980,11 +981,11 @@ namespace Ch.Elca.Iiop.Tests
             omg.org.CORBA.TypeCode tc =
                 m_orb.create_value_tc(repId, name, 0, m_orb.create_null_tc(),
                                       new ValueMember[] { m1 });
-            Assert.AreEqual(repId, tc.id(), "id");
-            Assert.AreEqual(TCKind.tk_value, tc.kind(), "king");
-            Assert.AreEqual(1, tc.member_count(), "nr of members");
-            Assert.AreEqual(m1.name, tc.member_name(0), "member m1 name");
-            Assert.AreEqual(m1.type.kind(), tc.member_type(0).kind(), "member m1 type");
+            ClassicAssert.AreEqual(repId, tc.id(), "id");
+            ClassicAssert.AreEqual(TCKind.tk_value, tc.kind(), "king");
+            ClassicAssert.AreEqual(1, tc.member_count(), "nr of members");
+            ClassicAssert.AreEqual(m1.name, tc.member_name(0), "member m1 name");
+            ClassicAssert.AreEqual(m1.type.kind(), tc.member_type(0).kind(), "member m1 type");
         }
 
         [Test]
@@ -997,11 +998,11 @@ namespace Ch.Elca.Iiop.Tests
             omg.org.CORBA.TypeCode tc =
                 m_orb.create_exception_tc(repId, name,
                                        new StructMember[] { m1 });
-            Assert.AreEqual(repId, tc.id(), "id");
-            Assert.AreEqual(TCKind.tk_except, tc.kind(), "king");
-            Assert.AreEqual(1, tc.member_count(), "nr of members");
-            Assert.AreEqual(m1.name, tc.member_name(0), "member m1 name");
-            Assert.AreEqual(m1.type.kind(), tc.member_type(0).kind(), "member m1 type");
+            ClassicAssert.AreEqual(repId, tc.id(), "id");
+            ClassicAssert.AreEqual(TCKind.tk_except, tc.kind(), "king");
+            ClassicAssert.AreEqual(1, tc.member_count(), "nr of members");
+            ClassicAssert.AreEqual(m1.name, tc.member_name(0), "member m1 name");
+            ClassicAssert.AreEqual(m1.type.kind(), tc.member_type(0).kind(), "member m1 type");
         }
 
     }
@@ -1083,8 +1084,8 @@ namespace Ch.Elca.Iiop.Tests
                               new IorProfile[] { m_profile });
             string iorString = ior.ToString();
             object objToString = m_orb.string_to_object(iorString);
-            Assert.NotNull(objToString, "obj to string not created");
-            Assert.IsTrue(
+            ClassicAssert.NotNull(objToString, "obj to string not created");
+            ClassicAssert.IsTrue(
                              RemotingServices.IsTransparentProxy(objToString), "obj not a proxy");
         }
 
@@ -1095,8 +1096,8 @@ namespace Ch.Elca.Iiop.Tests
                               new IorProfile[] { m_profile });
             string iorString = ior.ToString();
             object objToString = m_orb.string_to_object(iorString);
-            Assert.NotNull(objToString, "obj to string not created");
-            Assert.IsTrue(
+            ClassicAssert.NotNull(objToString, "obj to string not created");
+            ClassicAssert.IsTrue(
                              RemotingServices.IsTransparentProxy(objToString), "obj not a proxy");
         }
 
@@ -1138,10 +1139,10 @@ namespace Ch.Elca.Iiop.Tests
         public void TestIsAForNonProxy()
         {
             IsALocalIfTestImpl impl = new IsALocalIfTestImpl();
-            Assert.IsTrue(
+            ClassicAssert.IsTrue(
                              m_orb.is_a(impl, "IDL:Ch/Elca/Iiop/Tests/IsALocalIfTestInterface:1.0"), "is_a result for interface IsALocalIfTestInterface wrong");
 
-            Assert.IsTrue(
+            ClassicAssert.IsTrue(
                              !m_orb.is_a(impl,
                                          "IDL:Ch/Elca/Iiop/Tests/IsARemoteIfTestInterfaceNotImpl:1.0"), "is_a check for incompatible type");
         }
@@ -1158,12 +1159,12 @@ namespace Ch.Elca.Iiop.Tests
                 RemotingServices.Marshal(mbr, uri);
                 IsARemoteIfTestInterface proxy = (IsARemoteIfTestInterface)
                     RemotingServices.Connect(type, "iiop://localhost:" + TEST_PORT + "/" + uri);
-                Assert.IsTrue(
+                ClassicAssert.IsTrue(
                                  m_orb.is_a(proxy,
                                             repId), "is_a check for proxy rep-id");
-                Assert.IsTrue(m_orb.is_a(proxy,
+                ClassicAssert.IsTrue(m_orb.is_a(proxy,
                                             type), "is_a check for proxy type based");
-                Assert.IsTrue(
+                ClassicAssert.IsTrue(
                                  !m_orb.is_a(proxy,
                                              typeof(IsARemoteIfTestInterfaceNotImpl)), "is_a check for incompatible type");
             }
@@ -1185,13 +1186,13 @@ namespace Ch.Elca.Iiop.Tests
                 RemotingServices.Marshal(mbr, uri);
                 IsARemoteIfTestInterface proxy = (IsARemoteIfTestInterface)
                     RemotingServices.Connect(type, "iiop://localhost:" + TEST_PORT + "/" + uri);
-                Assert.IsTrue(
+                ClassicAssert.IsTrue(
                                  m_orb.is_a(proxy,
                                             repId), "is_a check for proxy rep-id");
-                Assert.IsTrue(
+                ClassicAssert.IsTrue(
                                  m_orb.is_a(proxy,
                                             type), "is_a check for proxy type based");
-                Assert.IsTrue(
+                ClassicAssert.IsTrue(
                                  !m_orb.is_a(proxy,
                                              typeof(IsARemoteIfTestInterfaceNotImpl)), "is_a check for incompatible type");
             }
@@ -1208,12 +1209,12 @@ namespace Ch.Elca.Iiop.Tests
             Type type = typeof(IsARemoteIfTestInterface);
             string repId = "IDL:Ch/Elca/Iiop/Tests/IsARemoteIfTestInterface:1.0";
 
-            Assert.IsTrue(
+            ClassicAssert.IsTrue(
                              m_orb.is_a(mbr,
                                         repId), "is_a check for proxy rep-id");
-            Assert.IsTrue(m_orb.is_a(mbr,
+            ClassicAssert.IsTrue(m_orb.is_a(mbr,
                                         type), "is_a check for proxy type based");
-            Assert.IsTrue(
+            ClassicAssert.IsTrue(
                              !m_orb.is_a(mbr,
                                          typeof(IsARemoteIfTestInterfaceNotImpl)), "is_a check for incompatible type");
         }
@@ -1225,13 +1226,13 @@ namespace Ch.Elca.Iiop.Tests
             Type type = typeof(IsARemoteIfTestInterface);
             string repId = "IDL:Ch/Elca/Iiop/Tests/IsARemoteIfTestInterface:1.0";
 
-            Assert.IsTrue(
+            ClassicAssert.IsTrue(
                              m_orb.is_a(mbr,
                                         repId), "is_a check for proxy rep-id");
-            Assert.IsTrue(
+            ClassicAssert.IsTrue(
                              m_orb.is_a(mbr,
                                         type), "is_a check for proxy type based");
-            Assert.IsTrue(
+            ClassicAssert.IsTrue(
                              !m_orb.is_a(mbr,
                                          typeof(IsARemoteIfTestInterfaceNotImpl)), "is_a check for incompatible type");
         }

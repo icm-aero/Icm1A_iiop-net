@@ -36,6 +36,7 @@ using Ch.Elca.Iiop.Idl;
 using Ch.Elca.Iiop.Marshalling;
 using Ch.Elca.Iiop.Cdr;
 using Ch.Elca.Iiop.Util;
+using NUnit.Framework.Legacy;
 
 namespace omg.org.CORBA
 {
@@ -2427,7 +2428,7 @@ namespace Ch.Elca.Iiop.Tests
         [Test]
         public void TestTypeForTypeCode()
         {
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                                    ReflectionHelper.Int32Type, m_tc.GetClsForTypeCode(), "wrong type for typecode");
         }
 
@@ -2435,35 +2436,35 @@ namespace Ch.Elca.Iiop.Tests
         public void TestEqual()
         {
             LongTC other = new LongTC();
-            Assert.IsTrue(m_tc.equal(other), "not equal");
+            ClassicAssert.IsTrue(m_tc.equal(other), "not equal");
             ULongTC other2 = new ULongTC();
-            Assert.IsTrue(!m_tc.equal(other2), "equal but shoudln't");
+            ClassicAssert.IsTrue(!m_tc.equal(other2), "equal but shoudln't");
         }
 
         [Test]
         public void TestEquivalent()
         {
             LongTC other = new LongTC();
-            Assert.IsTrue(m_tc.equivalent(other), "not equal");
+            ClassicAssert.IsTrue(m_tc.equivalent(other), "not equal");
             ULongTC other2 = new ULongTC();
-            Assert.IsTrue(!m_tc.equivalent(other2), "equal but shoudln't");
+            ClassicAssert.IsTrue(!m_tc.equivalent(other2), "equal but shoudln't");
         }
 
         [Test]
         public void TestKind()
         {
-            Assert.AreEqual(TCKind.tk_long, m_tc.kind(), "wrong kind");
+            ClassicAssert.AreEqual(TCKind.tk_long, m_tc.kind(), "wrong kind");
         }
 
         [Test]
         public void CanAssignValue()
         {
             int val = 11;
-            Assert.IsTrue(m_tc.IsInstanceOfTypeCode(val), "value assignement not possible");
+            ClassicAssert.IsTrue(m_tc.IsInstanceOfTypeCode(val), "value assignement not possible");
             uint val2 = 22;
-            Assert.IsTrue(
+            ClassicAssert.IsTrue(
                              !m_tc.IsInstanceOfTypeCode(val2), "value assignement possible, but shouldn't");
-            Assert.IsTrue(
+            ClassicAssert.IsTrue(
                              !m_tc.IsInstanceOfTypeCode(null), "value assignement possible, but shouldn't");
         }
 
@@ -2471,8 +2472,8 @@ namespace Ch.Elca.Iiop.Tests
         public void ConvertFromClsCompliant()
         {
             int val = 11;
-            Assert.AreEqual(val, m_tc.ConvertToAssignable(val), "convert was not correct");
-            Assert.AreEqual(val.GetType(),
+            ClassicAssert.AreEqual(val, m_tc.ConvertToAssignable(val), "convert was not correct");
+            ClassicAssert.AreEqual(val.GetType(),
                                    m_tc.ConvertToAssignable(val).GetType(), "convert was not correct");
         }
 
@@ -2480,9 +2481,9 @@ namespace Ch.Elca.Iiop.Tests
         public void ConvertToClsCompliant()
         {
             int val = 11;
-            Assert.AreEqual(val,
+            ClassicAssert.AreEqual(val,
                                    m_tc.ConvertToExternalRepresentation(val, true), "convert was not correct");
-            Assert.AreEqual(val.GetType(),
+            ClassicAssert.AreEqual(val.GetType(),
                                    m_tc.ConvertToExternalRepresentation(val, true).GetType(), "convert was not correct");
         }
     }
@@ -2506,7 +2507,7 @@ namespace Ch.Elca.Iiop.Tests
         [Test]
         public void TestTypeForTypeCode()
         {
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                                    ReflectionHelper.UInt32Type, m_tc.GetClsForTypeCode(), "wrong type for typecode");
         }
 
@@ -2514,35 +2515,35 @@ namespace Ch.Elca.Iiop.Tests
         public void TestEqual()
         {
             ULongTC other = new ULongTC();
-            Assert.IsTrue(m_tc.equal(other), "not equal");
+            ClassicAssert.IsTrue(m_tc.equal(other), "not equal");
             LongTC other2 = new LongTC();
-            Assert.IsTrue(!m_tc.equal(other2), "equal but shoudln't");
+            ClassicAssert.IsTrue(!m_tc.equal(other2), "equal but shoudln't");
         }
 
         [Test]
         public void TestEquivalent()
         {
             ULongTC other = new ULongTC();
-            Assert.IsTrue(m_tc.equivalent(other), "not equal");
+            ClassicAssert.IsTrue(m_tc.equivalent(other), "not equal");
             LongTC other2 = new LongTC();
-            Assert.IsTrue(!m_tc.equivalent(other2), "equal but shoudln't");
+            ClassicAssert.IsTrue(!m_tc.equivalent(other2), "equal but shoudln't");
         }
 
         [Test]
         public void TestKind()
         {
-            Assert.AreEqual(TCKind.tk_ulong, m_tc.kind(), "wrong kind");
+            ClassicAssert.AreEqual(TCKind.tk_ulong, m_tc.kind(), "wrong kind");
         }
 
         [Test]
         public void CanAssignValue()
         {
             uint val = 11;
-            Assert.IsTrue(m_tc.IsInstanceOfTypeCode(val), "value assignement not possible");
+            ClassicAssert.IsTrue(m_tc.IsInstanceOfTypeCode(val), "value assignement not possible");
             int val2 = 22;
-            Assert.IsTrue(
+            ClassicAssert.IsTrue(
                              !m_tc.IsInstanceOfTypeCode(val2), "value assignement possible, but shouldn't");
-            Assert.IsTrue(
+            ClassicAssert.IsTrue(
                              !m_tc.IsInstanceOfTypeCode(null), "value assignement possible, but shouldn't");
         }
 
@@ -2551,8 +2552,8 @@ namespace Ch.Elca.Iiop.Tests
         {
             uint val = 11;
             int valCls = (int)val;
-            Assert.AreEqual(val, m_tc.ConvertToAssignable(valCls), "convert was not correct");
-            Assert.AreEqual(val.GetType(),
+            ClassicAssert.AreEqual(val, m_tc.ConvertToAssignable(valCls), "convert was not correct");
+            ClassicAssert.AreEqual(val.GetType(),
                                    m_tc.ConvertToAssignable(valCls).GetType(), "convert was not correct");
         }
 
@@ -2561,8 +2562,8 @@ namespace Ch.Elca.Iiop.Tests
         {
             uint val = 11;
             int valCls = (int)val;
-            Assert.AreEqual(valCls, m_tc.ConvertToExternalRepresentation(val, true), "convert was not correct");
-            Assert.AreEqual(valCls.GetType(), m_tc.ConvertToExternalRepresentation(val, true).GetType(), "convert was not correct");
+            ClassicAssert.AreEqual(valCls, m_tc.ConvertToExternalRepresentation(val, true), "convert was not correct");
+            ClassicAssert.AreEqual(valCls.GetType(), m_tc.ConvertToExternalRepresentation(val, true).GetType(), "convert was not correct");
         }
 
     }
@@ -2586,41 +2587,41 @@ namespace Ch.Elca.Iiop.Tests
         [Test]
         public void TestTypeForTypeCode()
         {
-            Assert.AreEqual(ReflectionHelper.UInt64Type, m_tc.GetClsForTypeCode(), "wrong type for typecode");
+            ClassicAssert.AreEqual(ReflectionHelper.UInt64Type, m_tc.GetClsForTypeCode(), "wrong type for typecode");
         }
 
         [Test]
         public void TestEqual()
         {
             ULongLongTC other = new ULongLongTC();
-            Assert.IsTrue(m_tc.equal(other), "not equal");
+            ClassicAssert.IsTrue(m_tc.equal(other), "not equal");
             LongLongTC other2 = new LongLongTC();
-            Assert.IsTrue(!m_tc.equal(other2), "equal but shoudln't");
+            ClassicAssert.IsTrue(!m_tc.equal(other2), "equal but shoudln't");
         }
 
         [Test]
         public void TestEquivalent()
         {
             ULongLongTC other = new ULongLongTC();
-            Assert.IsTrue(m_tc.equivalent(other), "not equal");
+            ClassicAssert.IsTrue(m_tc.equivalent(other), "not equal");
             LongLongTC other2 = new LongLongTC();
-            Assert.IsTrue(!m_tc.equivalent(other2), "equal but shoudln't");
+            ClassicAssert.IsTrue(!m_tc.equivalent(other2), "equal but shoudln't");
         }
 
         [Test]
         public void TestKind()
         {
-            Assert.AreEqual(TCKind.tk_ulonglong, m_tc.kind(), "wrong kind");
+            ClassicAssert.AreEqual(TCKind.tk_ulonglong, m_tc.kind(), "wrong kind");
         }
 
         [Test]
         public void CanAssignValue()
         {
             ulong val = 11;
-            Assert.IsTrue(m_tc.IsInstanceOfTypeCode(val), "value assignement not possible");
+            ClassicAssert.IsTrue(m_tc.IsInstanceOfTypeCode(val), "value assignement not possible");
             long val2 = 22;
-            Assert.IsTrue(!m_tc.IsInstanceOfTypeCode(val2),"value assignement possible, but shouldn't");
-            Assert.IsTrue(!m_tc.IsInstanceOfTypeCode(null),"value assignement possible, but shouldn't");
+            ClassicAssert.IsTrue(!m_tc.IsInstanceOfTypeCode(val2),"value assignement possible, but shouldn't");
+            ClassicAssert.IsTrue(!m_tc.IsInstanceOfTypeCode(null),"value assignement possible, but shouldn't");
         }
     }
 
@@ -2644,41 +2645,41 @@ namespace Ch.Elca.Iiop.Tests
         [Test]
         public void TestTypeForTypeCode()
         {
-            Assert.AreEqual(ReflectionHelper.UInt16Type, m_tc.GetClsForTypeCode(), "wrong type for typecode");
+            ClassicAssert.AreEqual(ReflectionHelper.UInt16Type, m_tc.GetClsForTypeCode(), "wrong type for typecode");
         }
 
         [Test]
         public void TestEqual()
         {
             UShortTC other = new UShortTC();
-            Assert.IsTrue(m_tc.equal(other), "not equal");
+            ClassicAssert.IsTrue(m_tc.equal(other), "not equal");
             ShortTC other2 = new ShortTC();
-            Assert.IsTrue(!m_tc.equal(other2), "equal but shoudln't");
+            ClassicAssert.IsTrue(!m_tc.equal(other2), "equal but shoudln't");
         }
 
         [Test]
         public void TestEquivalent()
         {
             UShortTC other = new UShortTC();
-            Assert.IsTrue(m_tc.equivalent(other), "not equal");
+            ClassicAssert.IsTrue(m_tc.equivalent(other), "not equal");
             ShortTC other2 = new ShortTC();
-            Assert.IsTrue(!m_tc.equivalent(other2), "equal but shoudln't");
+            ClassicAssert.IsTrue(!m_tc.equivalent(other2), "equal but shoudln't");
         }
 
         [Test]
         public void TestKind()
         {
-            Assert.AreEqual(TCKind.tk_ushort, m_tc.kind(), "wrong kind");
+            ClassicAssert.AreEqual(TCKind.tk_ushort, m_tc.kind(), "wrong kind");
         }
 
         [Test]
         public void CanAssignValue()
         {
             ushort val = 11;
-            Assert.IsTrue(m_tc.IsInstanceOfTypeCode(val), "value assignement not possible");
+            ClassicAssert.IsTrue(m_tc.IsInstanceOfTypeCode(val), "value assignement not possible");
             short val2 = 22;
-            Assert.IsTrue(!m_tc.IsInstanceOfTypeCode(val2), "value assignement possible, but shouldn't");
-            Assert.IsTrue(!m_tc.IsInstanceOfTypeCode(null), "value assignement possible, but shouldn't");
+            ClassicAssert.IsTrue(!m_tc.IsInstanceOfTypeCode(val2), "value assignement possible, but shouldn't");
+            ClassicAssert.IsTrue(!m_tc.IsInstanceOfTypeCode(null), "value assignement possible, but shouldn't");
         }
     }
 

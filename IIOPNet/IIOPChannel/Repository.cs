@@ -38,6 +38,7 @@ using Ch.Elca.Iiop.Util;
 using Corba;
 using omg.org.CORBA;
 using System.Collections.Generic;
+using NUnit.Framework.Legacy;
 
 namespace Ch.Elca.Iiop.Idl {
 
@@ -668,17 +669,17 @@ namespace Ch.Elca.Iiop.Tests {
             Type required = typeof(IRepositoryTestIf1);
  
             Type typeForId;
-            Assert.IsTrue(Repository.IsInterfaceCompatible(required,
+            ClassicAssert.IsTrue(Repository.IsInterfaceCompatible(required,
                                                               repIdIf,
                                                               out typeForId),"type compatibility for TestIf2" );
-            Assert.AreEqual(typeof(IRepositoryTestIf2),
+            ClassicAssert.AreEqual(typeof(IRepositoryTestIf2),
                                    typeForId, "type for if id");
  
-            Assert.IsTrue(
+            ClassicAssert.IsTrue(
                              Repository.IsInterfaceCompatible(required,
                                                               repIdCl,
                                                               out typeForId), "type compatibility for TestClassImpl");
-            Assert.AreEqual(typeof(RepositoryTestClassImpl),
+            ClassicAssert.AreEqual(typeof(RepositoryTestClassImpl),
                                    typeForId,"type for cl id");
         }
  
@@ -693,9 +694,9 @@ namespace Ch.Elca.Iiop.Tests {
                 Repository.IsInterfaceCompatible(required, repIdCl,
                                                  out typeForId);
             // for non-verifiable type compatibility, return required Type for the id
-            Assert.AreEqual( required,
+            ClassicAssert.AreEqual( required,
                                    typeForId, "type for incompatible id");
-            Assert.IsTrue(!isCompatible, "type compatibility for TestIf2");
+            ClassicAssert.IsTrue(!isCompatible, "type compatibility for TestIf2");
         }
 
 

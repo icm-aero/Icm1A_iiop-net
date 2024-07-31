@@ -32,6 +32,7 @@ using Ch.Elca.Iiop.Idl;
 using Ch.Elca.Iiop.Marshalling;
 using Ch.Elca.Iiop.Cdr;
 using Ch.Elca.Iiop.Util;
+using NUnit.Framework.Legacy;
 using omg.org.CORBA;
 
 namespace Ch.Elca.Iiop.Marshalling {
@@ -836,7 +837,7 @@ namespace Ch.Elca.Iiop.Tests {
             byte val = 1;
             DataInputStream inputStream = CreateInputStream(new byte[] { val });
             byte read = inputStream.read_octet();
-            Assert.AreEqual(val, read, "read");
+            ClassicAssert.AreEqual(val, read, "read");
         }
  
     }
@@ -869,7 +870,7 @@ namespace Ch.Elca.Iiop.Tests {
                                                                  m_serFactory);
             doStream.write_octet(val);
             outputStream.Seek(0, SeekOrigin.Begin);
-            Assert.AreEqual(val, outputStream.ReadByte(), "written");
+            ClassicAssert.AreEqual(val, outputStream.ReadByte(), "written");
         }
  
     }

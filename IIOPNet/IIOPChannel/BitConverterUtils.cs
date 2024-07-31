@@ -30,6 +30,7 @@
 using System;
 using Ch.Elca.Iiop;
 using System.Runtime.InteropServices;
+using NUnit.Framework.Legacy;
 
 namespace Ch.Elca.Iiop.Cdr {
 
@@ -350,228 +351,228 @@ namespace Ch.Elca.Iiop.Tests {
         public void TestInt16WBEWToS() {
             System.Int16 result = 
                 BitConverterUtils.Reverse(BitConverter.ToInt16(new byte[] { 0, 1 }, 0));
-            Assert.AreEqual(1, result, "converted wbe int 16");
+            ClassicAssert.AreEqual(1, result, "converted wbe int 16");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToInt16(new byte[] { 1, 2 }, 0));
-            Assert.AreEqual(258, result, "converted wbe int 16 (2)");
+            ClassicAssert.AreEqual(258, result, "converted wbe int 16 (2)");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToInt16(new byte[] { 0x7F, 0xFF }, 0));
-            Assert.AreEqual(Int16.MaxValue, result, "converted wbe int 16 (3)");
+            ClassicAssert.AreEqual(Int16.MaxValue, result, "converted wbe int 16 (3)");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToInt16(new byte[] { 0x80, 0x00 }, 0));
-            Assert.AreEqual(Int16.MinValue, result, "converted wbe int 16 (4)");
+            ClassicAssert.AreEqual(Int16.MinValue, result, "converted wbe int 16 (4)");
         }
         
         [Test]
         public void TestInt16WLEWToS() {
             System.Int16 result = 
                 BitConverter.ToInt16(new byte[] { 1, 0 }, 0);
-            Assert.AreEqual(1, result, "converted wbe int 16");
+            ClassicAssert.AreEqual(1, result, "converted wbe int 16");
             
             result = 
                 BitConverter.ToInt16(new byte[] { 2, 1 }, 0);
-            Assert.AreEqual(258, result, "converted wbe int 16 (2)");
+            ClassicAssert.AreEqual(258, result, "converted wbe int 16 (2)");
             
             result = 
                 BitConverter.ToInt16(new byte[] { 0xFF, 0x7F }, 0);
-            Assert.AreEqual(Int16.MaxValue, result, "converted wbe int 16 (3)");
+            ClassicAssert.AreEqual(Int16.MaxValue, result, "converted wbe int 16 (3)");
             
             result = 
                 BitConverter.ToInt16(new byte[] { 0x00, 0x80 }, 0);
-            Assert.AreEqual(Int16.MinValue, result, "converted wbe int 16 (4)");
+            ClassicAssert.AreEqual(Int16.MinValue, result, "converted wbe int 16 (4)");
         }
         
         [Test]
         public void TestInt32WBEWToS() {
             System.Int32 result = 
                 BitConverterUtils.Reverse(BitConverter.ToInt32(new byte[] { 0, 0, 0, 1 }, 0));
-            Assert.AreEqual(1, result, "converted wbe int 32");
+            ClassicAssert.AreEqual(1, result, "converted wbe int 32");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToInt32(new byte[] { 0, 0, 1, 2 }, 0));
-            Assert.AreEqual(258, result, "converted wbe int 32 (2)");
+            ClassicAssert.AreEqual(258, result, "converted wbe int 32 (2)");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToInt32(new byte[] { 0x7F, 0xFF, 0xFF, 0xFF }, 0));
-            Assert.AreEqual(Int32.MaxValue, result, "converted wbe int 32 (3)");
+            ClassicAssert.AreEqual(Int32.MaxValue, result, "converted wbe int 32 (3)");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToInt32(new byte[] { 0x80, 0x00, 0x00, 0x00 }, 0));
-            Assert.AreEqual(Int32.MinValue, result, "converted wbe int 32 (4)");
+            ClassicAssert.AreEqual(Int32.MinValue, result, "converted wbe int 32 (4)");
         }
         
         [Test]
         public void TestInt32WLEWToS() {
             System.Int32 result = 
                 BitConverter.ToInt32(new byte[] { 1, 0, 0, 0 }, 0);
-            Assert.AreEqual(1, result, "converted wbe int 32");
+            ClassicAssert.AreEqual(1, result, "converted wbe int 32");
             
             result = 
                 BitConverter.ToInt32(new byte[] { 2, 1, 0, 0 }, 0);
-            Assert.AreEqual(258, result, "converted wbe int 32 (2)");
+            ClassicAssert.AreEqual(258, result, "converted wbe int 32 (2)");
             
             result = 
                 BitConverter.ToInt32(new byte[] { 0xFF, 0xFF, 0xFF, 0x7F }, 0);
-            Assert.AreEqual(Int32.MaxValue, result, "converted wbe int 32 (3)");
+            ClassicAssert.AreEqual(Int32.MaxValue, result, "converted wbe int 32 (3)");
             
             result = 
                 BitConverter.ToInt32(new byte[] { 0x00, 0x00, 0x00, 0x80 }, 0);
-            Assert.AreEqual(Int32.MinValue, result, "converted wbe int 32 (4)");
+            ClassicAssert.AreEqual(Int32.MinValue, result, "converted wbe int 32 (4)");
         }
         
         [Test]
         public void TestInt64WBEWToS() {
             System.Int64 result = 
                 BitConverterUtils.Reverse(BitConverter.ToInt64(new byte[] { 0, 0, 0, 0, 0, 0, 0, 1 }, 0));
-            Assert.AreEqual(1, result, "converted wbe int 64");
+            ClassicAssert.AreEqual(1, result, "converted wbe int 64");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToInt64(new byte[] { 0, 0, 0, 0, 0, 0, 1, 2 }, 0));
-            Assert.AreEqual(258, result, "converted wbe int 64 (2)");
+            ClassicAssert.AreEqual(258, result, "converted wbe int 64 (2)");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToInt64(new byte[] { 0x7F, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, 0));
-            Assert.AreEqual(Int64.MaxValue, result, "converted wbe int 64 (3)");
+            ClassicAssert.AreEqual(Int64.MaxValue, result, "converted wbe int 64 (3)");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToInt64(new byte[] { 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }, 0));
-            Assert.AreEqual(Int64.MinValue, result, "converted wbe int 64 (4)");
+            ClassicAssert.AreEqual(Int64.MinValue, result, "converted wbe int 64 (4)");
         }
         
         [Test]
         public void TestInt64WLEWToS() {
             System.Int64 result = 
                 BitConverter.ToInt64(new byte[] { 1, 0, 0, 0, 0, 0, 0, 0 }, 0);
-            Assert.AreEqual(1, result, "converted wbe int 64");
+            ClassicAssert.AreEqual(1, result, "converted wbe int 64");
             
             result = 
                 BitConverter.ToInt64(new byte[] { 2, 1, 0, 0, 0, 0, 0, 0 }, 0);
-            Assert.AreEqual(258, result, "converted wbe int 64 (2)");
+            ClassicAssert.AreEqual(258, result, "converted wbe int 64 (2)");
             
             result = 
                 BitConverter.ToInt64(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x7F }, 0);
-            Assert.AreEqual(Int64.MaxValue, result, "converted wbe int 64 (3)");
+            ClassicAssert.AreEqual(Int64.MaxValue, result, "converted wbe int 64 (3)");
             
             result = 
                 BitConverter.ToInt64(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80 }, 0);
-            Assert.AreEqual(Int64.MinValue, result, "converted wbe int 64 (4)");
+            ClassicAssert.AreEqual(Int64.MinValue, result, "converted wbe int 64 (4)");
         }
         
         [Test]
         public void TestUInt16WBEWToS() {
             System.UInt16 result = 
                 BitConverterUtils.Reverse(BitConverter.ToUInt16(new byte[] { 0, 1 }, 0));
-            Assert.AreEqual(1, result, "converted wbe uint 16");
+            ClassicAssert.AreEqual(1, result, "converted wbe uint 16");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToUInt16(new byte[] { 1, 2 }, 0));
-            Assert.AreEqual(258, result, "converted wbe uint 16 (2)");
+            ClassicAssert.AreEqual(258, result, "converted wbe uint 16 (2)");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToUInt16(new byte[] { 0xFF, 0xFF }, 0));
-            Assert.AreEqual(UInt16.MaxValue, result, "converted wbe uint 16 (3)");
+            ClassicAssert.AreEqual(UInt16.MaxValue, result, "converted wbe uint 16 (3)");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToUInt16(new byte[] { 0x00, 0x00 }, 0));
-            Assert.AreEqual(UInt16.MinValue, result, "converted wbe uint 16 (4)");
+            ClassicAssert.AreEqual(UInt16.MinValue, result, "converted wbe uint 16 (4)");
         }
         
         [Test]
         public void TestUInt16WLEWToS() {
             System.UInt16 result = 
                 BitConverter.ToUInt16(new byte[] { 1, 0 }, 0);
-            Assert.AreEqual(1, result, "converted wbe uint 16");
+            ClassicAssert.AreEqual(1, result, "converted wbe uint 16");
             
             result = 
                 BitConverter.ToUInt16(new byte[] { 2, 1 }, 0);
-            Assert.AreEqual(258, result, "converted wbe uint 16 (2)");
+            ClassicAssert.AreEqual(258, result, "converted wbe uint 16 (2)");
             
             result = 
                 BitConverter.ToUInt16(new byte[] { 0xFF, 0xFF }, 0);
-            Assert.AreEqual(UInt16.MaxValue, result, "converted wbe uint 16 (3)");
+            ClassicAssert.AreEqual(UInt16.MaxValue, result, "converted wbe uint 16 (3)");
             
             result = 
                 BitConverter.ToUInt16(new byte[] { 0x00, 0x00 }, 0);
-            Assert.AreEqual(UInt16.MinValue, result, "converted wbe uint 16 (4)");
+            ClassicAssert.AreEqual(UInt16.MinValue, result, "converted wbe uint 16 (4)");
         }
         
         [Test]
         public void TestUInt32WBEWToS() {
             System.UInt32 result = 
                 BitConverterUtils.Reverse(BitConverter.ToUInt32(new byte[] { 0, 0, 0, 1 }, 0));
-            Assert.AreEqual(1, result, "converted wbe uint 32");
+            ClassicAssert.AreEqual(1, result, "converted wbe uint 32");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToUInt32(new byte[] { 0, 0, 1, 2 }, 0));
-            Assert.AreEqual(258, result, "converted wbe uint 32 (2)");
+            ClassicAssert.AreEqual(258, result, "converted wbe uint 32 (2)");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToUInt32(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }, 0));
-            Assert.AreEqual(UInt32.MaxValue, result, "converted wbe uint 32 (3)");
+            ClassicAssert.AreEqual(UInt32.MaxValue, result, "converted wbe uint 32 (3)");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToUInt32(new byte[] { 0x00, 0x00, 0x00, 0x00 }, 0));
-            Assert.AreEqual(UInt32.MinValue, result, "converted wbe uint 32 (4)");
+            ClassicAssert.AreEqual(UInt32.MinValue, result, "converted wbe uint 32 (4)");
         }
         
         [Test]
         public void TestUInt32WLEWToS() {
             System.UInt32 result = 
                 BitConverter.ToUInt32(new byte[] { 1, 0, 0, 0 }, 0);
-            Assert.AreEqual(1, result, "converted wbe uint 32");
+            ClassicAssert.AreEqual(1, result, "converted wbe uint 32");
             
             result = 
                 BitConverter.ToUInt32(new byte[] { 2, 1, 0, 0 }, 0);
-            Assert.AreEqual(258, result, "converted wbe uint 32 (2)");
+            ClassicAssert.AreEqual(258, result, "converted wbe uint 32 (2)");
             
             result = 
                 BitConverter.ToUInt32(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }, 0);
-            Assert.AreEqual(UInt32.MaxValue, result, "converted wbe uint 32 (3)");
+            ClassicAssert.AreEqual(UInt32.MaxValue, result, "converted wbe uint 32 (3)");
             
             result = 
                 BitConverter.ToUInt32(new byte[] { 0x00, 0x00, 0x00, 0x00 }, 0);
-            Assert.AreEqual(UInt32.MinValue, result, "converted wbe uint 32 (4)");
+            ClassicAssert.AreEqual(UInt32.MinValue, result, "converted wbe uint 32 (4)");
         }
         
         [Test]
         public void TestUInt64WBEWToS() {
             System.UInt64 result = 
                 BitConverterUtils.Reverse(BitConverter.ToUInt64(new byte[] { 0, 0, 0, 0, 0, 0, 0, 1 }, 0));
-            Assert.AreEqual(1, result, "converted wbe uint 64");
+            ClassicAssert.AreEqual(1, result, "converted wbe uint 64");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToUInt64(new byte[] { 0, 0, 0, 0, 0, 0, 1, 2 }, 0));
-            Assert.AreEqual(258, result, "converted wbe uint 64 (2)");
+            ClassicAssert.AreEqual(258, result, "converted wbe uint 64 (2)");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToUInt64(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, 0));
-            Assert.AreEqual(UInt64.MaxValue, result, "converted wbe uint 64 (3)");
+            ClassicAssert.AreEqual(UInt64.MaxValue, result, "converted wbe uint 64 (3)");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToUInt64(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }, 0));
-            Assert.AreEqual(UInt64.MinValue, result, "converted wbe uint 64 (4)");
+            ClassicAssert.AreEqual(UInt64.MinValue, result, "converted wbe uint 64 (4)");
         }
         
         [Test]
         public void TestUInt64WLEWToS() {
             System.UInt64 result = 
                 BitConverter.ToUInt64(new byte[] { 1, 0, 0, 0, 0, 0, 0, 0 }, 0);
-            Assert.AreEqual(1, result, "converted wbe uint 64");
+            ClassicAssert.AreEqual(1, result, "converted wbe uint 64");
             
             result = 
                 BitConverter.ToUInt64(new byte[] { 2, 1, 0, 0, 0, 0, 0, 0 }, 0);
-            Assert.AreEqual(258, result, "converted wbe uint 64 (2)");
+            ClassicAssert.AreEqual(258, result, "converted wbe uint 64 (2)");
             
             result = 
                 BitConverter.ToUInt64(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, 0);
-            Assert.AreEqual(UInt64.MaxValue, result, "converted wbe uint 64 (3)");
+            ClassicAssert.AreEqual(UInt64.MaxValue, result, "converted wbe uint 64 (3)");
             
             result = 
                 BitConverter.ToUInt64(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }, 0);
-            Assert.AreEqual(UInt64.MinValue, result, "converted wbe uint 64 (4)");
+            ClassicAssert.AreEqual(UInt64.MinValue, result, "converted wbe uint 64 (4)");
         }
 
 
@@ -807,76 +808,76 @@ namespace Ch.Elca.Iiop.Tests {
         public void TestSingleWBEWToS() {
             System.Single result = 
                 BitConverterUtils.Reverse(BitConverter.ToSingle(new byte[] { 0x3F, 0x80, 0x00, 0x00 }, 0));
-            Assert.AreEqual((float)1.0f, result, "converted wbe single");
+            ClassicAssert.AreEqual((float)1.0f, result, "converted wbe single");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToSingle(new byte[] { 0x3C, 0x23, 0xD7, 0x0A }, 0));
-            Assert.AreEqual((float)0.01f, result, "converted wbe single (2)");
+            ClassicAssert.AreEqual((float)0.01f, result, "converted wbe single (2)");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToSingle(new byte[] { 0x7F, 0x7F, 0xFF, 0xFF }, 0));
-            Assert.AreEqual(Single.MaxValue, result, "converted wbe single (3)");
+            ClassicAssert.AreEqual(Single.MaxValue, result, "converted wbe single (3)");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToSingle(new byte[] { 0xFF, 0x7F, 0xFF, 0xFF }, 0));
-            Assert.AreEqual(Single.MinValue, result, "converted wbe single (4)");
+            ClassicAssert.AreEqual(Single.MinValue, result, "converted wbe single (4)");
         }
         
         [Test]
         public void TestSingleWLEWToS() {
             System.Single result = 
                 BitConverter.ToSingle(new byte[] { 0x00, 0x00, 0x80, 0x3F }, 0);
-            Assert.AreEqual((float)1.0f, result, "converted wbe single");
+            ClassicAssert.AreEqual((float)1.0f, result, "converted wbe single");
             
             result = 
                 BitConverter.ToSingle(new byte[] { 0x0A, 0xD7, 0x23, 0x3C }, 0);
-            Assert.AreEqual((float)0.01f, result, "converted wbe single (2)");
+            ClassicAssert.AreEqual((float)0.01f, result, "converted wbe single (2)");
             
             result = 
                 BitConverter.ToSingle(new byte[] { 0xFF, 0xFF, 0x7F, 0x7F }, 0);
-            Assert.AreEqual(Single.MaxValue, result, "converted wbe single (3)");
+            ClassicAssert.AreEqual(Single.MaxValue, result, "converted wbe single (3)");
             
             result = 
                 BitConverter.ToSingle(new byte[] { 0xFF, 0xFF, 0x7F, 0xFF }, 0);
-            Assert.AreEqual(Single.MinValue, result, "converted wbe single (4)");
+            ClassicAssert.AreEqual(Single.MinValue, result, "converted wbe single (4)");
         }
         
         [Test]
         public void TestDoubleWBEWToS() {
             System.Double result = 
                 BitConverterUtils.Reverse(BitConverter.ToDouble(new byte[] { 0x3F, 0xF0, 0, 0, 0, 0, 0, 0 }, 0));
-            Assert.AreEqual(1.0, result, "converted wbe double");
+            ClassicAssert.AreEqual(1.0, result, "converted wbe double");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToDouble(new byte[] { 0x3F, 0x84, 0x7A, 0xE1, 0x47, 0xAE, 0x14, 0x7B }, 0));
-            Assert.AreEqual(0.01, result, "converted wbe double (2)");
+            ClassicAssert.AreEqual(0.01, result, "converted wbe double (2)");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToDouble(new byte[] { 0x7F, 0xEF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, 0));
-            Assert.AreEqual(Double.MaxValue, result, "converted wbe double (3)");
+            ClassicAssert.AreEqual(Double.MaxValue, result, "converted wbe double (3)");
             
             result = 
                 BitConverterUtils.Reverse(BitConverter.ToDouble(new byte[] { 0xFF, 0xEF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, 0));
-            Assert.AreEqual(Double.MinValue, result, "converted wbe double (4)");
+            ClassicAssert.AreEqual(Double.MinValue, result, "converted wbe double (4)");
         }
         
         [Test]
         public void TestDoubleWLEWToS() {
             System.Double result = 
                 BitConverter.ToDouble(new byte[] { 0, 0, 0, 0, 0, 0, 0xF0, 0x3F }, 0);
-            Assert.AreEqual(1.0, result, "converted wbe double");
+            ClassicAssert.AreEqual(1.0, result, "converted wbe double");
             
             result = 
                 BitConverter.ToDouble(new byte[] { 0x7B, 0x14, 0xAE, 0x47, 0xE1, 0x7A, 0x84, 0x3F }, 0);
-            Assert.AreEqual(0.01, result, "converted wbe double (2)");
+            ClassicAssert.AreEqual(0.01, result, "converted wbe double (2)");
             
             result = 
                 BitConverter.ToDouble(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xEF, 0x7F }, 0);
-            Assert.AreEqual(Double.MaxValue, result, "converted wbe double (3)");
+            ClassicAssert.AreEqual(Double.MaxValue, result, "converted wbe double (3)");
             
             result = 
                 BitConverter.ToDouble(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xEF, 0xFF }, 0);
-            Assert.AreEqual(Double.MinValue, result, "converted wbe double (4)");
+            ClassicAssert.AreEqual(Double.MinValue, result, "converted wbe double (4)");
         }
         
         [Test]

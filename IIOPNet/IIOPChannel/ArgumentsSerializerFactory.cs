@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections;
+using NUnit.Framework.Legacy;
 
 namespace Ch.Elca.Iiop.Marshalling {
  
@@ -136,9 +137,9 @@ namespace Ch.Elca.Iiop.Tests {
         }
  
         private void CheckArrayEqual(object[] a1, object[] a2) {
-            Assert.AreEqual(a1.Length, a2.Length);
+            ClassicAssert.AreEqual(a1.Length, a2.Length);
             for (int i = 0; i < a1.Length; i++) {
-                Assert.AreEqual(a1[i], a2[i]);
+                ClassicAssert.AreEqual(a1[i], a2[i]);
             }
         }
  
@@ -181,7 +182,7 @@ namespace Ch.Elca.Iiop.Tests {
                 object[] deserOut;
                 object deser = MarshalAndUnmarshalResponeArgsOnce(testMethod, returnValue, outArgs,
                                                                   out deserOut);
-                Assert.AreEqual(returnValue, deser);
+                ClassicAssert.AreEqual(returnValue, deser);
                 CheckArrayEqual(outArgs, deserOut);
             }
  

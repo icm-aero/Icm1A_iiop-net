@@ -32,6 +32,7 @@ using System;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Globalization;
+using NUnit.Framework.Legacy;
 using omg.org.CORBA;
 
 
@@ -148,12 +149,12 @@ namespace Ch.Elca.Iiop.Tests
                                              new NullTC(), 0);
 
             Type res = m_gen.CreateOrGetType(typeName, vt);
-            Assert.NotNull(res);
-            Assert.AreEqual(typeName, res.FullName, "type name");
-            Assert.AreEqual(repId, Repository.GetRepositoryID(res), "rep id");
-            Assert.NotNull(res.GetField(m1.name,
+            ClassicAssert.NotNull(res);
+            ClassicAssert.AreEqual(typeName, res.FullName, "type name");
+            ClassicAssert.AreEqual(repId, Repository.GetRepositoryID(res), "rep id");
+            ClassicAssert.NotNull(res.GetField(m1.name,
                                                  BindingFlags.Public | BindingFlags.Instance), "field M1");
-            Assert.IsTrue(res.IsSerializable, "Serializable");
+            ClassicAssert.IsTrue(res.IsSerializable, "Serializable");
         }
 
         [Test]
@@ -167,9 +168,9 @@ namespace Ch.Elca.Iiop.Tests
                                              new NullTC(), 0);
 
             Type res = m_gen.CreateOrGetType(typeName, vt);
-            Assert.NotNull(res);
-            Assert.AreEqual(typeName, res.FullName, "type name");
-            Assert.AreEqual(repId, Repository.GetRepositoryID(res), "rep id");
+            ClassicAssert.NotNull(res);
+            ClassicAssert.AreEqual(typeName, res.FullName, "type name");
+            ClassicAssert.AreEqual(repId, Repository.GetRepositoryID(res), "rep id");
         }
 
     }
@@ -200,11 +201,11 @@ namespace Ch.Elca.Iiop.Tests
                                            boxedTC);
 
             Type res = m_gen.CreateOrGetType(typeName, vt);
-            Assert.NotNull(res);
-            Assert.AreEqual(typeName, res.FullName, "type name");
-            Assert.AreEqual(repId, Repository.GetRepositoryID(res), "rep id");
+            ClassicAssert.NotNull(res);
+            ClassicAssert.AreEqual(typeName, res.FullName, "type name");
+            ClassicAssert.AreEqual(repId, Repository.GetRepositoryID(res), "rep id");
 
-            Assert.IsTrue(res.IsSerializable, "Serializable");
+            ClassicAssert.IsTrue(res.IsSerializable, "Serializable");
         }
 
         [Test]
@@ -219,9 +220,9 @@ namespace Ch.Elca.Iiop.Tests
                                            boxedTC);
 
             Type res = m_gen.CreateOrGetType(typeName, vt);
-            Assert.NotNull(res);
-            Assert.AreEqual(typeName, res.FullName, "type name");
-            Assert.AreEqual(repId, Repository.GetRepositoryID(res), "rep id");
+            ClassicAssert.NotNull(res);
+            ClassicAssert.AreEqual(typeName, res.FullName, "type name");
+            ClassicAssert.AreEqual(repId, Repository.GetRepositoryID(res), "rep id");
         }
 
     }
@@ -252,14 +253,14 @@ namespace Ch.Elca.Iiop.Tests
                                    enumFields);
 
             Type res = m_gen.CreateOrGetType(typeName, tc);
-            Assert.NotNull(res);
-            Assert.AreEqual(typeName, res.FullName, "type name");
-            Assert.AreEqual(repId, Repository.GetRepositoryID(res), "rep id");
+            ClassicAssert.NotNull(res);
+            ClassicAssert.AreEqual(typeName, res.FullName, "type name");
+            ClassicAssert.AreEqual(repId, Repository.GetRepositoryID(res), "rep id");
             string[] genEnumNames = Enum.GetNames(res);
-            Assert.AreEqual(enumFields.Length, genEnumNames.Length, "nr of enum entries");
-            Assert.AreEqual(enumFields[0], genEnumNames[0], "enum entry 1");
-            Assert.AreEqual(enumFields[1], genEnumNames[1], "enum entry 2");
-            Assert.IsTrue(res.IsSerializable, "Serializable");
+            ClassicAssert.AreEqual(enumFields.Length, genEnumNames.Length, "nr of enum entries");
+            ClassicAssert.AreEqual(enumFields[0], genEnumNames[0], "enum entry 1");
+            ClassicAssert.AreEqual(enumFields[1], genEnumNames[1], "enum entry 2");
+            ClassicAssert.IsTrue(res.IsSerializable, "Serializable");
         }
 
         [Test]
@@ -273,9 +274,9 @@ namespace Ch.Elca.Iiop.Tests
                                    new string[] { name + "_1", name + "_2" });
 
             Type res = m_gen.CreateOrGetType(typeName, tc);
-            Assert.NotNull(res);
-            Assert.AreEqual(typeName, res.FullName, "type name");
-            Assert.AreEqual(repId, Repository.GetRepositoryID(res), "rep id");
+            ClassicAssert.NotNull(res);
+            ClassicAssert.AreEqual(typeName, res.FullName, "type name");
+            ClassicAssert.AreEqual(repId, Repository.GetRepositoryID(res), "rep id");
         }
 
     }
@@ -306,12 +307,12 @@ namespace Ch.Elca.Iiop.Tests
                                        name, new StructMember[] {
                                        m1 });
             Type res = m_gen.CreateOrGetType(typeName, tc);
-            Assert.NotNull(res);
-            Assert.AreEqual(typeName, res.FullName, "type name");
-            Assert.AreEqual(repId, Repository.GetRepositoryID(res), "rep id");
-            Assert.NotNull(res.GetField(m1.name,
+            ClassicAssert.NotNull(res);
+            ClassicAssert.AreEqual(typeName, res.FullName, "type name");
+            ClassicAssert.AreEqual(repId, Repository.GetRepositoryID(res), "rep id");
+            ClassicAssert.NotNull(res.GetField(m1.name,
                                                  BindingFlags.Public | BindingFlags.Instance), "field M1");
-            Assert.IsTrue(res.IsSerializable, "Serializable");
+            ClassicAssert.IsTrue(res.IsSerializable, "Serializable");
         }
 
         [Test]
@@ -324,9 +325,9 @@ namespace Ch.Elca.Iiop.Tests
                                        name, new StructMember[] {
                                        new StructMember("M1", new LongTC()) });
             Type res = m_gen.CreateOrGetType(typeName, tc);
-            Assert.NotNull(res);
-            Assert.AreEqual(typeName, res.FullName, "type name");
-            Assert.AreEqual(repId, Repository.GetRepositoryID(res), "rep id");
+            ClassicAssert.NotNull(res);
+            ClassicAssert.AreEqual(typeName, res.FullName, "type name");
+            ClassicAssert.AreEqual(repId, Repository.GetRepositoryID(res), "rep id");
         }
 
     }
@@ -359,30 +360,30 @@ namespace Ch.Elca.Iiop.Tests
             UnionTC tc = new UnionTC(repId, name, discrTC, 0,
                                      new UnionSwitchCase[] { s1, s2 });
             Type res = m_gen.CreateOrGetType(typeName, tc);
-            Assert.NotNull(res);
-            Assert.AreEqual(typeName, res.FullName, "type name");
-            Assert.AreEqual(repId, Repository.GetRepositoryID(res), "rep id");
+            ClassicAssert.NotNull(res);
+            ClassicAssert.AreEqual(typeName, res.FullName, "type name");
+            ClassicAssert.AreEqual(repId, Repository.GetRepositoryID(res), "rep id");
 
             MethodInfo getFieldForDiscrMethod =
                 res.GetMethod(UnionGenerationHelper.GET_FIELD_FOR_DISCR_METHOD, BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
-            Assert.NotNull(getFieldForDiscrMethod, "get field for Discr method");
+            ClassicAssert.NotNull(getFieldForDiscrMethod, "get field for Discr method");
             FieldInfo fieldForDiscr1 = (FieldInfo)
                 getFieldForDiscrMethod.Invoke(null, new object[] { s1.DiscriminatorValue });
             FieldInfo fieldForDiscr2 = (FieldInfo)
                 getFieldForDiscrMethod.Invoke(null, new object[] { s2.DiscriminatorValue });
-            Assert.NotNull(fieldForDiscr1, "fieldForDiscr1");
-            Assert.NotNull(fieldForDiscr2, "fieldForDiscr2");
-            Assert.AreEqual(((TypeCodeImpl)s1.ElementType).GetClsForTypeCode(),
+            ClassicAssert.NotNull(fieldForDiscr1, "fieldForDiscr1");
+            ClassicAssert.NotNull(fieldForDiscr2, "fieldForDiscr2");
+            ClassicAssert.AreEqual(((TypeCodeImpl)s1.ElementType).GetClsForTypeCode(),
                                    fieldForDiscr1.FieldType, "fieldForDiscr1 Type");
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                                    ((TypeCodeImpl)s2.ElementType).GetClsForTypeCode(),
                                    fieldForDiscr2.FieldType, "fieldForDiscr2 Type");
             PropertyInfo discrProperty = res.GetProperty(UnionGenerationHelper.DISCR_PROPERTY_NAME,
                                                          BindingFlags.Public | BindingFlags.Instance);
-            Assert.NotNull(discrProperty, "discr property");
-            Assert.AreEqual(discrTC.GetClsForTypeCode(),
+            ClassicAssert.NotNull(discrProperty, "discr property");
+            ClassicAssert.AreEqual(discrTC.GetClsForTypeCode(),
                                    discrProperty.PropertyType, "discr property type");
-            Assert.IsTrue(res.IsSerializable, "Serializable");
+            ClassicAssert.IsTrue(res.IsSerializable, "Serializable");
         }
 
         [Test]
@@ -398,9 +399,9 @@ namespace Ch.Elca.Iiop.Tests
             UnionTC tc = new UnionTC(repId, name, discrTC, 0,
                                      new UnionSwitchCase[] { s1, s2 });
             Type res = m_gen.CreateOrGetType(typeName, tc);
-            Assert.NotNull(res);
-            Assert.AreEqual(typeName, res.FullName, "type name");
-            Assert.AreEqual(repId, Repository.GetRepositoryID(res), "rep id");
+            ClassicAssert.NotNull(res);
+            ClassicAssert.AreEqual(typeName, res.FullName, "type name");
+            ClassicAssert.AreEqual(repId, Repository.GetRepositoryID(res), "rep id");
         }
 
     }

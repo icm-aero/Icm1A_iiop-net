@@ -42,6 +42,7 @@ using Ch.Elca.Iiop.Util;
 using Ch.Elca.Iiop.CorbaObjRef;
 using Ch.Elca.Iiop.Services;
 using Ch.Elca.Iiop.Interception;
+using NUnit.Framework.Legacy;
 using omg.org.CORBA;
 using omg.org.IOP;
 
@@ -887,11 +888,11 @@ namespace Ch.Elca.Iiop.Tests {
             cdrIn.ConfigStream(0, new GiopVersion(1,2));
             omg.org.IOP.ServiceContextList result = new ServiceContextList(cdrIn);
             // check if context is present
-            Assert.IsTrue(result.ContainsServiceContext(1234567), "expected context not in collection");
+            ClassicAssert.IsTrue(result.ContainsServiceContext(1234567), "expected context not in collection");
         }
         
         [Test]
-        [ExpectedException(typeof(BAD_PARAM))]
+        //[ExpectedException(typeof(BAD_PARAM))]
         public void TestWCharSetNotDefinedClient() {
             MethodInfo methodToCall =
                 typeof(TestStringInterface).GetMethod("EchoWString");
@@ -915,8 +916,12 @@ namespace Ch.Elca.Iiop.Tests {
                                       new IInterceptionOption[0]);
             CdrOutputStreamImpl targetStream = 
                 new CdrOutputStreamImpl(new MemoryStream(), 0, new GiopVersion(1,2));
-            ser.SerialiseRequest(request, targetStream, targetProfile,
-                                 conDesc);
+            /*ser.SerialiseRequest(request, targetStream, targetProfile,
+                                 conDesc);*/
+
+            Assert.That(() => ser.SerialiseRequest(request, targetStream, targetProfile,
+                    conDesc),
+                Throws.TypeOf<BAD_PARAM>());
         }
         
         [Test]
@@ -946,7 +951,7 @@ namespace Ch.Elca.Iiop.Tests {
             ser.SerialiseRequest(request, targetStream, targetProfile,
                                  conDesc);
             
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                 new byte[] { 0, 0, 0, 5, 3, 0, 0, 0,
                              0, 0, 0, 0, 
                              0, 0, 0, 7, 116, 101, 115, 116,
@@ -1009,11 +1014,11 @@ namespace Ch.Elca.Iiop.Tests {
             }
 
             // now check if values are correct
-            Assert.IsTrue(result != null, "deserialised message is null");
+            ClassicAssert.IsTrue(result != null, "deserialised message is null");
             object[] args = (object[])result.Properties[SimpleGiopMsg.ARGS_KEY];
-            Assert.IsTrue(args != null, "args is null");
-            Assert.AreEqual(1, args.Length);
-            Assert.AreEqual("test", args[0]);
+            ClassicAssert.IsTrue(args != null, "args is null");
+            ClassicAssert.AreEqual(1, args.Length);
+            ClassicAssert.AreEqual("test", args[0]);
         }
         
         [Test]
@@ -1058,8 +1063,8 @@ namespace Ch.Elca.Iiop.Tests {
                                                 conDesc, InterceptorManager.EmptyInterceptorOptions);
                 Assert.Fail("no exception, although code set not set");
             } catch (RequestDeserializationException rde) {
-                Assert.NotNull(rde.Reason, "rde inner exception");
-                Assert.AreEqual(typeof(BAD_PARAM), rde.Reason.GetType(), "rde type");
+                ClassicAssert.NotNull(rde.Reason, "rde inner exception");
+                ClassicAssert.AreEqual(typeof(BAD_PARAM), rde.Reason.GetType(), "rde type");
             } finally {
                 RemotingServices.Disconnect(service);
             }

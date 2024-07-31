@@ -33,6 +33,7 @@ using System.Text;
 using System.Collections;
 using Ch.Elca.Iiop.Security.Ssl;
 using Ch.Elca.Iiop.Util;
+using NUnit.Framework.Legacy;
 using omg.org.CORBA;
 using omg.org.IOP;
 
@@ -367,39 +368,39 @@ namespace Ch.Elca.Iiop.Tests {
             string testIiopLoc = "iiop://elca.ch:1234/test";
             IiopLoc parsed = new IiopLoc(testIiopLoc, m_codec,
                                          new object[] { m_defaultCodeSetTaggedComponent });
-            Assert.AreEqual("test", parsed.ObjectUri);
-            Assert.AreEqual(1, parsed.GetProfiles().Length);
-            Assert.AreEqual(typeof(InternetIiopProfile), parsed.GetProfiles()[0].GetType());
+            ClassicAssert.AreEqual("test", parsed.ObjectUri);
+            ClassicAssert.AreEqual(1, parsed.GetProfiles().Length);
+            ClassicAssert.AreEqual(typeof(InternetIiopProfile), parsed.GetProfiles()[0].GetType());
             InternetIiopProfile prof = (InternetIiopProfile)(parsed.GetProfiles()[0]);
-            Assert.AreEqual(1, prof.Version.Major);
-            Assert.AreEqual(2, prof.Version.Minor);
-            Assert.AreEqual("elca.ch", prof.HostName);
-            Assert.AreEqual(1234, prof.Port);
+            ClassicAssert.AreEqual(1, prof.Version.Major);
+            ClassicAssert.AreEqual(2, prof.Version.Minor);
+            ClassicAssert.AreEqual("elca.ch", prof.HostName);
+            ClassicAssert.AreEqual(1234, prof.Port);
             
             testIiopLoc = "iiop://elca.ch:56789/test";
             parsed = new IiopLoc(testIiopLoc, m_codec,
                                  new object[] { m_defaultCodeSetTaggedComponent });
-            Assert.AreEqual("test", parsed.ObjectUri);
-            Assert.AreEqual(1, parsed.GetProfiles().Length);
-            Assert.AreEqual(typeof(InternetIiopProfile), parsed.GetProfiles()[0].GetType());
+            ClassicAssert.AreEqual("test", parsed.ObjectUri);
+            ClassicAssert.AreEqual(1, parsed.GetProfiles().Length);
+            ClassicAssert.AreEqual(typeof(InternetIiopProfile), parsed.GetProfiles()[0].GetType());
             prof = (InternetIiopProfile)(parsed.GetProfiles()[0]);
-            Assert.AreEqual(1, prof.Version.Major);
-            Assert.AreEqual(2, prof.Version.Minor);
-            Assert.AreEqual("elca.ch", prof.HostName);
-            Assert.AreEqual(56789, prof.Port);
+            ClassicAssert.AreEqual(1, prof.Version.Major);
+            ClassicAssert.AreEqual(2, prof.Version.Minor);
+            ClassicAssert.AreEqual("elca.ch", prof.HostName);
+            ClassicAssert.AreEqual(56789, prof.Port);
 
             testIiopLoc = "iiop1.1://elca.ch:1234/test";
             parsed = new IiopLoc(testIiopLoc, m_codec,
                                  new object[] { m_defaultCodeSetTaggedComponent });
-            Assert.AreEqual("test", parsed.ObjectUri);
-            Assert.AreEqual(1, parsed.GetProfiles().Length);
-            Assert.AreEqual(typeof(InternetIiopProfile), parsed.GetProfiles()[0].GetType());
+            ClassicAssert.AreEqual("test", parsed.ObjectUri);
+            ClassicAssert.AreEqual(1, parsed.GetProfiles().Length);
+            ClassicAssert.AreEqual(typeof(InternetIiopProfile), parsed.GetProfiles()[0].GetType());
             prof = (InternetIiopProfile)(parsed.GetProfiles()[0]);
-            Assert.AreEqual(1, prof.Version.Major);
-            Assert.AreEqual(1, prof.Version.Minor);
-            Assert.AreEqual("elca.ch", prof.HostName);
-            Assert.AreEqual(1234, prof.Port);
-            Assert.IsTrue(parsed.GetProfiles()[0].TaggedComponents.ContainsTaggedComponent(
+            ClassicAssert.AreEqual(1, prof.Version.Major);
+            ClassicAssert.AreEqual(1, prof.Version.Minor);
+            ClassicAssert.AreEqual("elca.ch", prof.HostName);
+            ClassicAssert.AreEqual(1234, prof.Port);
+            ClassicAssert.IsTrue(parsed.GetProfiles()[0].TaggedComponents.ContainsTaggedComponent(
                                 CodeSetService.SERVICE_ID));
         }
         
@@ -409,29 +410,29 @@ namespace Ch.Elca.Iiop.Tests {
             string testIiopLoc = "iiop-ssl://elca.ch:1234/test";
             IiopLoc parsed = new IiopLoc(testIiopLoc, m_codec,
                                          new object[] { m_defaultCodeSetTaggedComponent });
-            Assert.AreEqual("test", parsed.ObjectUri);
-            Assert.AreEqual(1, parsed.GetProfiles().Length);
-            Assert.AreEqual(typeof(InternetIiopProfile), parsed.GetProfiles()[0].GetType());
+            ClassicAssert.AreEqual("test", parsed.ObjectUri);
+            ClassicAssert.AreEqual(1, parsed.GetProfiles().Length);
+            ClassicAssert.AreEqual(typeof(InternetIiopProfile), parsed.GetProfiles()[0].GetType());
             InternetIiopProfile prof = (InternetIiopProfile)(parsed.GetProfiles()[0]);
-            Assert.AreEqual(1, prof.Version.Major);
-            Assert.AreEqual(2, prof.Version.Minor);
-            Assert.AreEqual("elca.ch", prof.HostName);
-            Assert.AreEqual(0, prof.Port);
+            ClassicAssert.AreEqual(1, prof.Version.Major);
+            ClassicAssert.AreEqual(2, prof.Version.Minor);
+            ClassicAssert.AreEqual("elca.ch", prof.HostName);
+            ClassicAssert.AreEqual(0, prof.Port);
             
             testIiopLoc = "iiop-ssl1.1://elca.ch:1234/test";
             parsed = new IiopLoc(testIiopLoc, m_codec,
                                  new object[] { m_defaultCodeSetTaggedComponent });
-            Assert.AreEqual("test", parsed.ObjectUri);
-            Assert.AreEqual(1, parsed.GetProfiles().Length);
-            Assert.AreEqual(typeof(InternetIiopProfile), parsed.GetProfiles()[0].GetType());
+            ClassicAssert.AreEqual("test", parsed.ObjectUri);
+            ClassicAssert.AreEqual(1, parsed.GetProfiles().Length);
+            ClassicAssert.AreEqual(typeof(InternetIiopProfile), parsed.GetProfiles()[0].GetType());
             prof = (InternetIiopProfile)(parsed.GetProfiles()[0]);
-            Assert.AreEqual(1, prof.Version.Major);
-            Assert.AreEqual(1, prof.Version.Minor);
-            Assert.AreEqual("elca.ch", prof.HostName);
-            Assert.AreEqual(0, prof.Port);
-            Assert.IsTrue(prof.TaggedComponents.ContainsTaggedComponent(
+            ClassicAssert.AreEqual(1, prof.Version.Major);
+            ClassicAssert.AreEqual(1, prof.Version.Minor);
+            ClassicAssert.AreEqual("elca.ch", prof.HostName);
+            ClassicAssert.AreEqual(0, prof.Port);
+            ClassicAssert.IsTrue(prof.TaggedComponents.ContainsTaggedComponent(
                                  CodeSetService.SERVICE_ID));
-            Assert.IsTrue(prof.TaggedComponents.ContainsTaggedComponent(
+            ClassicAssert.IsTrue(prof.TaggedComponents.ContainsTaggedComponent(
                                  TAG_SSL_SEC_TRANS.ConstVal));
         }
         
@@ -444,10 +445,10 @@ namespace Ch.Elca.Iiop.Tests {
             string objectUri;
             GiopVersion version;
             Uri channelUri = parsed.ParseUrl(out objectUri, out version);
-            Assert.AreEqual("test", objectUri, "object uri");
-            Assert.AreEqual(1, version.Major, "version major");
-            Assert.AreEqual(2, version.Minor, "version minor");
-            Assert.AreEqual("iiop1.2://elca.ch:1234/",
+            ClassicAssert.AreEqual("test", objectUri, "object uri");
+            ClassicAssert.AreEqual(1, version.Major, "version major");
+            ClassicAssert.AreEqual(2, version.Minor, "version minor");
+            ClassicAssert.AreEqual("iiop1.2://elca.ch:1234/",
                                    channelUri.AbsoluteUri, "channel uri");
         }
         
@@ -460,10 +461,10 @@ namespace Ch.Elca.Iiop.Tests {
             string objectUri;
             GiopVersion version;
             Uri channelUri = parsed.ParseUrl(out objectUri, out version);
-            Assert.AreEqual("test", objectUri, "object uri");
-            Assert.AreEqual(1, version.Major,"version major");
-            Assert.AreEqual(2, version.Minor, "version minor");
-            Assert.AreEqual("iiop-ssl1.2://elca.ch:1234/",
+            ClassicAssert.AreEqual("test", objectUri, "object uri");
+            ClassicAssert.AreEqual(1, version.Major,"version major");
+            ClassicAssert.AreEqual(2, version.Minor, "version minor");
+            ClassicAssert.AreEqual("iiop-ssl1.2://elca.ch:1234/",
                                    channelUri.AbsoluteUri, "channel uri");
         }
 

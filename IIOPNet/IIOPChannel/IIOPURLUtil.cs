@@ -31,6 +31,7 @@
 using System;
 using omg.org.CORBA;
 using Ch.Elca.Iiop.CorbaObjRef;
+using NUnit.Framework.Legacy;
 using omg.org.IOP;
 
 namespace Ch.Elca.Iiop.Util
@@ -269,37 +270,37 @@ namespace Ch.Elca.Iiop.Tests
         private void CheckIorForUrl(Ior iorForUrl, int expectedNumberOfComponents,
                                     bool shouldHaveCodeSetComponent)
         {
-            Assert.AreEqual(1, iorForUrl.Profiles.Length, "number of profiles");
-            Assert.AreEqual(typeof(MarshalByRefObject),
+            ClassicAssert.AreEqual(1, iorForUrl.Profiles.Length, "number of profiles");
+            ClassicAssert.AreEqual(typeof(MarshalByRefObject),
                                    iorForUrl.Type, "type");
             IIorProfile profile = iorForUrl.FindInternetIiopProfile();
-            Assert.NotNull(profile, "internet iiop profile");
-            Assert.AreEqual(
+            ClassicAssert.NotNull(profile, "internet iiop profile");
+            ClassicAssert.AreEqual(
                                                  new byte[] { 116, 101, 115, 116 },
                                                  profile.ObjectKey, "profile object key");
-            Assert.AreEqual(new GiopVersion(1, 2), profile.Version, "profile giop version");
+            ClassicAssert.AreEqual(new GiopVersion(1, 2), profile.Version, "profile giop version");
 
             if (shouldHaveCodeSetComponent)
             {
-                Assert.AreEqual(
+                ClassicAssert.AreEqual(
                                        expectedNumberOfComponents,
                                        profile.TaggedComponents.Count, "number of components");
-                Assert.IsTrue(profile.ContainsTaggedComponent(
+                ClassicAssert.IsTrue(profile.ContainsTaggedComponent(
                                      CodeSetService.SERVICE_ID), "code set component present");
                 CodeSetComponentData data = (CodeSetComponentData)
                     profile.TaggedComponents.GetComponentData(CodeSetService.SERVICE_ID,
                                                               m_codec,
                                                               CodeSetComponentData.TypeCode);
-                Assert.AreEqual(
+                ClassicAssert.AreEqual(
                                        (int)CharSet.LATIN1,
                                        data.NativeCharSet, "code set component: native char set");
-                Assert.AreEqual(
+                ClassicAssert.AreEqual(
                                        (int)WCharSet.UTF16,
                                        data.NativeWCharSet, "code set component: native char set");
             }
             else
             {
-                Assert.IsTrue(
+                ClassicAssert.IsTrue(
                                  !profile.ContainsTaggedComponent(
                                      CodeSetService.SERVICE_ID), "code set component present");
             }

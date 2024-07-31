@@ -34,6 +34,7 @@ using System.Diagnostics;
 using Ch.Elca.Iiop.Util;
 using Ch.Elca.Iiop.Idl;
 using Ch.Elca.Iiop.Interception;
+using NUnit.Framework.Legacy;
 using omg.org.CORBA;
 using omg.org.IOP;
 
@@ -515,7 +516,7 @@ namespace Ch.Elca.Iiop.Tests {
 
             Serializer ser = factory.Create(createFor, 
                                             AttributeExtCollection.EmptyCollection);
-            Assert.AreEqual(expectedSerType, ser.GetType(), "wrong serializer type");
+            ClassicAssert.AreEqual(expectedSerType, ser.GetType(), "wrong serializer type");
         }
 
         [Test]

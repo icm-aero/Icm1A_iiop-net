@@ -28,6 +28,8 @@
  */
 
 
+using NUnit.Framework;
+
 #if UnitTest
 
 namespace Ch.Elca.Iiop.Tests
@@ -35,6 +37,7 @@ namespace Ch.Elca.Iiop.Tests
 
     using System.IO;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using Ch.Elca.Iiop;
     using Ch.Elca.Iiop.Cdr;
     using omg.org.CORBA;
@@ -61,7 +64,7 @@ namespace Ch.Elca.Iiop.Tests
             byte[] testData = new byte[] { 0, 0, 0, 5, 65, 66, 67, 68, 0 };
             CdrInputStream inputStream = PrepareStream(testData);
             string result = inputStream.ReadString();
-            Assert.AreEqual("ABCD", result, "read string");
+            ClassicAssert.AreEqual("ABCD", result, "read string");
         }
 
         [Test]
@@ -71,16 +74,19 @@ namespace Ch.Elca.Iiop.Tests
             CdrInputStream inputStream = PrepareStream(testData);
             inputStream.WCharSet = (int)Ch.Elca.Iiop.Services.WCharSet.UTF16;
             string result = inputStream.ReadWString();
-            Assert.AreEqual("ABCD", result, "read string");
+            ClassicAssert.AreEqual("ABCD", result, "read string");
         }
 
         [Test]
-        [ExpectedException(typeof(BAD_PARAM))]
+       // [ExpectedException(typeof(BAD_PARAM))]
         public void TestReadWStringCodeSetNotSet()
         {
             byte[] testData = new byte[] { 0, 0, 0, 8, 0, 65, 0, 66, 0, 67, 0, 68 };
             CdrInputStream inputStream = PrepareStream(testData);
-            string result = inputStream.ReadWString();
+           // string result = inputStream.ReadWString();
+            Assert.That(
+                inputStream.ReadWString(),
+                Throws.TypeOf<BAD_PARAM>());
             Assert.Fail("no exception, although no wchar code set set");
         }
 
@@ -104,7 +110,7 @@ namespace Ch.Elca.Iiop.Tests
         private void AssertOutput(byte[] expected, MemoryStream actual)
         {
             byte[] actualArray = actual.ToArray();
-            Assert.AreEqual(expected, actualArray, "output");
+            ClassicAssert.AreEqual(expected, actualArray, "output");
         }
 
         [Test]
@@ -135,7 +141,7 @@ namespace Ch.Elca.Iiop.Tests
         }
 
         [Test]
-        [ExpectedException(typeof(BAD_PARAM))]
+        //  [ExpectedException(typeof(BAD_PARAM))]
         public void TestWriteWStringCodeSetNotSet()
         {
 
@@ -144,7 +150,9 @@ namespace Ch.Elca.Iiop.Tests
             using (MemoryStream outBase = new MemoryStream())
             {
                 CdrOutputStream outputStream = PrepareStream(outBase);
-                outputStream.WriteWString(testData);
+             //   outputStream.WriteWString(testData);
+                Assert.That(() => outputStream.WriteWString(testData),
+                    Throws.TypeOf<BAD_PARAM>());
                 Assert.Fail("no exception, although no wchar code set set");
             }
 

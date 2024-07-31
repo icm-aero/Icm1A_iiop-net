@@ -31,6 +31,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using Ch.Elca.Iiop.Cdr;
+using NUnit.Framework.Legacy;
 
 namespace Ch.Elca.Iiop {
     
@@ -306,12 +307,12 @@ namespace Ch.Elca.Iiop.Tests {
         
         [Test]
         public void TestGetHeaderFlagsForBigEndian() {
-            Assert.AreEqual(0, GiopHeader.GetDefaultHeaderFlagsForEndian(Endian.BigEndian));
+            ClassicAssert.AreEqual(0, GiopHeader.GetDefaultHeaderFlagsForEndian(Endian.BigEndian));
         }
         
         [Test]
         public void TestGetHeaderFlagsForLittleEndian() {
-            Assert.AreEqual(1, GiopHeader.GetDefaultHeaderFlagsForEndian(Endian.LittleEndian));
+            ClassicAssert.AreEqual(1, GiopHeader.GetDefaultHeaderFlagsForEndian(Endian.LittleEndian));
         }        
         
         [Test]
@@ -322,7 +323,7 @@ namespace Ch.Elca.Iiop.Tests {
             } else {
                 expected = 0;
             }
-            Assert.AreEqual(expected,
+            ClassicAssert.AreEqual(expected,
                                    GiopHeader.GetDefaultHeaderFlagsForPlatform());
         }
         

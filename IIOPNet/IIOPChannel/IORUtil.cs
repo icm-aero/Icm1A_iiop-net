@@ -35,6 +35,7 @@ using System.Threading;
 using Ch.Elca.Iiop.CorbaObjRef;
 using Ch.Elca.Iiop.Idl;
 using Ch.Elca.Iiop.Interception;
+using NUnit.Framework.Legacy;
 using omg.org.CORBA;
 using omg.org.PortableInterceptor;
 
@@ -368,12 +369,12 @@ namespace Ch.Elca.Iiop.Tests
         {
             int startIndex = 0;
             string result = IorUtil.EscapeNonAscii("foo", ref startIndex);
-            Assert.AreEqual(0, startIndex);
-            Assert.AreEqual("foo", result);
-            Assert.AreEqual(@"fran\u00E7ois", IorUtil.EscapeNonAscii("françois", ref startIndex));
-            Assert.AreEqual("françois", IorUtil.UnescapeNonAscii(@"fran\u00E7ois"));
-            Assert.AreEqual(@"fran\u00E7\\u00B9ois", IorUtil.EscapeNonAscii(@"franç\u00B9ois", ref startIndex));
-            Assert.AreEqual(@"franç\u00B9ois", IorUtil.UnescapeNonAscii(@"fran\u00E7\\u00B9ois"));
+            ClassicAssert.AreEqual(0, startIndex);
+            ClassicAssert.AreEqual("foo", result);
+            ClassicAssert.AreEqual(@"fran\u00E7ois", IorUtil.EscapeNonAscii("françois", ref startIndex));
+            ClassicAssert.AreEqual("françois", IorUtil.UnescapeNonAscii(@"fran\u00E7ois"));
+            ClassicAssert.AreEqual(@"fran\u00E7\\u00B9ois", IorUtil.EscapeNonAscii(@"franç\u00B9ois", ref startIndex));
+            ClassicAssert.AreEqual(@"franç\u00B9ois", IorUtil.UnescapeNonAscii(@"fran\u00E7\\u00B9ois"));
         }
     }
 }

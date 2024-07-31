@@ -29,6 +29,7 @@
 
 using System;
 using System.IO;
+using NUnit.Framework.Legacy;
 
 namespace Ch.Elca.Iiop.Util {
 
@@ -297,7 +298,7 @@ namespace Ch.Elca.Iiop.Tests {
 
             PeekSupportingStream peekSup = new PeekSupportingStream(stream);
             for (int i = 0; i < 10; i++) {
-                Assert.AreEqual(i, peekSup.ReadByte());
+                ClassicAssert.AreEqual(i, peekSup.ReadByte());
             }
         }
 
@@ -312,13 +313,13 @@ namespace Ch.Elca.Iiop.Tests {
             PeekSupportingStream peekSup = new PeekSupportingStream(stream);
             peekSup.StartPeeking();
             for (int i = 0; i < 7; i++) {
-                Assert.AreEqual(i, peekSup.ReadByte());
+                ClassicAssert.AreEqual(i, peekSup.ReadByte());
             }
             peekSup.EndPeeking();
 
             // read the whole content after end of peeking
             for (int i = 0; i < 10; i++) {
-                Assert.AreEqual(i, peekSup.ReadByte());
+                ClassicAssert.AreEqual(i, peekSup.ReadByte());
             }
         }
 
@@ -333,25 +334,25 @@ namespace Ch.Elca.Iiop.Tests {
             PeekSupportingStream peekSup = new PeekSupportingStream(stream);
             peekSup.StartPeeking();
             for (int i = 0; i < 7; i++) {
-                Assert.AreEqual(i, peekSup.ReadByte());
+                ClassicAssert.AreEqual(i, peekSup.ReadByte());
             }
             peekSup.EndPeeking();
 
             // now read something, then peek anew
             // read the whole content after end of peeking
             for (int i = 0; i < 3; i++) {
-                Assert.AreEqual(i, peekSup.ReadByte());
+                ClassicAssert.AreEqual(i, peekSup.ReadByte());
             }
 
             peekSup.StartPeeking();
             for (int i = 3; i < 9; i++) {
-                Assert.AreEqual(i, peekSup.ReadByte());
+                ClassicAssert.AreEqual(i, peekSup.ReadByte());
             }
             peekSup.EndPeeking();
 
             // now read the rest of the stream
             for (int i = 3; i < 10; i++) {
-                Assert.AreEqual(i, peekSup.ReadByte());
+                ClassicAssert.AreEqual(i, peekSup.ReadByte());
             }
         }
 
@@ -368,7 +369,7 @@ namespace Ch.Elca.Iiop.Tests {
             peekSup.Read(result, 0, 10);
 
             for (int i = 0; i < 10; i++) {
-                Assert.AreEqual(i, result[i]);
+                ClassicAssert.AreEqual(i, result[i]);
             }
         }
  
@@ -383,7 +384,7 @@ namespace Ch.Elca.Iiop.Tests {
             peekSup.StartPeeking();
             peekSup.EndPeeking();
             int res = peekSup.ReadByte();
-            Assert.AreEqual(0, res);
+            ClassicAssert.AreEqual(0, res);
         }
     }
 

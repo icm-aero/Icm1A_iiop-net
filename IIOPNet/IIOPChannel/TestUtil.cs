@@ -1,3 +1,5 @@
+using NUnit.Framework.Legacy;
+
 #if UnitTest
 
 namespace Ch.Elca.Iiop.Tests {
@@ -19,11 +21,11 @@ namespace Ch.Elca.Iiop.Tests {
         
         public static void AssertEquals(string message, Array expected, Array actual) {
             if (expected == null) {
-                Assert.IsNull(actual, message + " [actual not null]");
+                ClassicAssert.IsNull(actual, message + " [actual not null]");
             }
-            Assert.AreEqual(expected.Length, actual.Length, message + " [actual length not equal to expected]");
+            ClassicAssert.AreEqual(expected.Length, actual.Length, message + " [actual length not equal to expected]");
             for (int i = 0; i < expected.Length; i++) {
-                Assert.AreEqual(expected.GetValue(i), actual.GetValue(i), message + " [actual element " + i + " differs from expected]");
+                ClassicAssert.AreEqual(expected.GetValue(i), actual.GetValue(i), message + " [actual element " + i + " differs from expected]");
             }
         }
         

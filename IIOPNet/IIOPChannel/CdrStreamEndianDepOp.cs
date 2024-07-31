@@ -36,6 +36,7 @@ using Ch.Elca.Iiop.Services;
 using Ch.Elca.Iiop.CodeSet;
 using omg.org.CORBA;
 using System.Runtime.InteropServices;
+using NUnit.Framework.Legacy;
 
 namespace Ch.Elca.Iiop.Cdr
 {
@@ -690,13 +691,13 @@ namespace Ch.Elca.Iiop.Tests
             cdrIn.ConfigStream(STREAM_BIG_ENDIAN_FLAG, new GiopVersion(1, 2));
 
             System.Int16 result = cdrIn.ReadShort();
-            Assert.AreEqual(1, result, "read wbe int 16");
+            ClassicAssert.AreEqual(1, result, "read wbe int 16");
             result = cdrIn.ReadShort();
-            Assert.AreEqual(258, result, "read wbe int 16 (2)");
+            ClassicAssert.AreEqual(258, result, "read wbe int 16 (2)");
             result = cdrIn.ReadShort();
-            Assert.AreEqual(Int16.MaxValue, result, "read wbe int 16 (3)");
+            ClassicAssert.AreEqual(Int16.MaxValue, result, "read wbe int 16 (3)");
             result = cdrIn.ReadShort();
-            Assert.AreEqual(Int16.MinValue, result, "read wbe int 16 (4)");
+            ClassicAssert.AreEqual(Int16.MinValue, result, "read wbe int 16 (4)");
         }
 
         [Test]
@@ -710,13 +711,13 @@ namespace Ch.Elca.Iiop.Tests
             cdrIn.ConfigStream(STREAM_LITTLE_ENDIAN_FLAG, new GiopVersion(1, 2));
 
             System.Int16 result = cdrIn.ReadShort();
-            Assert.AreEqual(1, result, "read wle int 16");
+            ClassicAssert.AreEqual(1, result, "read wle int 16");
             result = cdrIn.ReadShort();
-            Assert.AreEqual(258, result, "read wle int 16 (2)");
+            ClassicAssert.AreEqual(258, result, "read wle int 16 (2)");
             result = cdrIn.ReadShort();
-            Assert.AreEqual(Int16.MaxValue, result, "read wle int 16 (3)");
+            ClassicAssert.AreEqual(Int16.MaxValue, result, "read wle int 16 (3)");
             result = cdrIn.ReadShort();
-            Assert.AreEqual(Int16.MinValue, result, "read wle int 16 (4)");
+            ClassicAssert.AreEqual(Int16.MinValue, result, "read wle int 16 (4)");
         }
 
         [Test]
@@ -731,13 +732,13 @@ namespace Ch.Elca.Iiop.Tests
             stream.Seek(0, SeekOrigin.Begin);
             byte[] result = new byte[2];
             stream.Read(result, 0, 2);
-            Assert.AreEqual(new byte[] { 0, 1 }, result, "converted wbe int 16");
+            ClassicAssert.AreEqual(new byte[] { 0, 1 }, result, "converted wbe int 16");
             stream.Read(result, 0, 2);
-            Assert.AreEqual(new byte[] { 1, 2 }, result, "converted wbe int 16 (2)");
+            ClassicAssert.AreEqual(new byte[] { 1, 2 }, result, "converted wbe int 16 (2)");
             stream.Read(result, 0, 2);
-            Assert.AreEqual(new byte[] { 0x7F, 0xFF }, result, "converted wbe int 16 (3)");
+            ClassicAssert.AreEqual(new byte[] { 0x7F, 0xFF }, result, "converted wbe int 16 (3)");
             stream.Read(result, 0, 2);
-            Assert.AreEqual(new byte[] { 0x80, 0x00 }, result, "converted wbe int 16 (4)");
+            ClassicAssert.AreEqual(new byte[] { 0x80, 0x00 }, result, "converted wbe int 16 (4)");
         }
 
         [Test]
@@ -752,13 +753,13 @@ namespace Ch.Elca.Iiop.Tests
             stream.Seek(0, SeekOrigin.Begin);
             byte[] result = new byte[2];
             stream.Read(result, 0, 2);
-            Assert.AreEqual(new byte[] { 1, 0 }, result, "converted lbe int 16");
+            ClassicAssert.AreEqual(new byte[] { 1, 0 }, result, "converted lbe int 16");
             stream.Read(result, 0, 2);
-            Assert.AreEqual(new byte[] { 2, 1 }, result, "converted lbe int 16 (2)");
+            ClassicAssert.AreEqual(new byte[] { 2, 1 }, result, "converted lbe int 16 (2)");
             stream.Read(result, 0, 2);
-            Assert.AreEqual(new byte[] { 0xFF, 0x7F }, result, "converted lbe int 16 (3)");
+            ClassicAssert.AreEqual(new byte[] { 0xFF, 0x7F }, result, "converted lbe int 16 (3)");
             stream.Read(result, 0, 2);
-            Assert.AreEqual(new byte[] { 0x00, 0x80 }, result, "converted lbe int 16 (4)");
+            ClassicAssert.AreEqual(new byte[] { 0x00, 0x80 }, result, "converted lbe int 16 (4)");
         }
 
         [Test]
@@ -772,13 +773,13 @@ namespace Ch.Elca.Iiop.Tests
             cdrIn.ConfigStream(STREAM_BIG_ENDIAN_FLAG, new GiopVersion(1, 2));
 
             System.UInt16 result = cdrIn.ReadUShort();
-            Assert.AreEqual(1, result, "read wbe uint 16");
+            ClassicAssert.AreEqual(1, result, "read wbe uint 16");
             result = cdrIn.ReadUShort();
-            Assert.AreEqual(258, result, "read wbe uint 16 (2)");
+            ClassicAssert.AreEqual(258, result, "read wbe uint 16 (2)");
             result = cdrIn.ReadUShort();
-            Assert.AreEqual(UInt16.MaxValue, result, "read wbe uint 16 (3)");
+            ClassicAssert.AreEqual(UInt16.MaxValue, result, "read wbe uint 16 (3)");
             result = cdrIn.ReadUShort();
-            Assert.AreEqual(UInt16.MinValue, result, "read wbe uint 16 (4)");
+            ClassicAssert.AreEqual(UInt16.MinValue, result, "read wbe uint 16 (4)");
         }
 
         [Test]
@@ -792,13 +793,13 @@ namespace Ch.Elca.Iiop.Tests
             cdrIn.ConfigStream(STREAM_LITTLE_ENDIAN_FLAG, new GiopVersion(1, 2));
 
             System.UInt16 result = cdrIn.ReadUShort();
-            Assert.AreEqual(1, result, "read wle uint 16");
+            ClassicAssert.AreEqual(1, result, "read wle uint 16");
             result = cdrIn.ReadUShort();
-            Assert.AreEqual(258, result, "read wle uint 16 (2)");
+            ClassicAssert.AreEqual(258, result, "read wle uint 16 (2)");
             result = cdrIn.ReadUShort();
-            Assert.AreEqual(UInt16.MaxValue, result, "read wle uint 16 (3)");
+            ClassicAssert.AreEqual(UInt16.MaxValue, result, "read wle uint 16 (3)");
             result = cdrIn.ReadUShort();
-            Assert.AreEqual(UInt16.MinValue, result, "read wle uint 16 (4)");
+            ClassicAssert.AreEqual(UInt16.MinValue, result, "read wle uint 16 (4)");
         }
 
         [Test]
@@ -813,13 +814,13 @@ namespace Ch.Elca.Iiop.Tests
             stream.Seek(0, SeekOrigin.Begin);
             byte[] result = new byte[2];
             stream.Read(result, 0, 2);
-            Assert.AreEqual(new byte[] { 0, 1 }, result, "converted wbe uint 16");
+            ClassicAssert.AreEqual(new byte[] { 0, 1 }, result, "converted wbe uint 16");
             stream.Read(result, 0, 2);
-            Assert.AreEqual(new byte[] { 1, 2 }, result, "converted wbe uint 16 (2)");
+            ClassicAssert.AreEqual(new byte[] { 1, 2 }, result, "converted wbe uint 16 (2)");
             stream.Read(result, 0, 2);
-            Assert.AreEqual(new byte[] { 0xFF, 0xFF }, result, "converted wbe uint 16 (3)");
+            ClassicAssert.AreEqual(new byte[] { 0xFF, 0xFF }, result, "converted wbe uint 16 (3)");
             stream.Read(result, 0, 2);
-            Assert.AreEqual(new byte[] { 0x00, 0x00 }, result, "converted wbe uint 16 (4)");
+            ClassicAssert.AreEqual(new byte[] { 0x00, 0x00 }, result, "converted wbe uint 16 (4)");
         }
 
         [Test]
@@ -834,13 +835,13 @@ namespace Ch.Elca.Iiop.Tests
             stream.Seek(0, SeekOrigin.Begin);
             byte[] result = new byte[2];
             stream.Read(result, 0, 2);
-            Assert.AreEqual(new byte[] { 1, 0 }, result, "converted lbe uint 16");
+            ClassicAssert.AreEqual(new byte[] { 1, 0 }, result, "converted lbe uint 16");
             stream.Read(result, 0, 2);
-            Assert.AreEqual(new byte[] { 2, 1 }, result, "converted lbe uint 16 (2)");
+            ClassicAssert.AreEqual(new byte[] { 2, 1 }, result, "converted lbe uint 16 (2)");
             stream.Read(result, 0, 2);
-            Assert.AreEqual(new byte[] { 0xFF, 0xFF }, result, "converted lbe uint 16 (3)");
+            ClassicAssert.AreEqual(new byte[] { 0xFF, 0xFF }, result, "converted lbe uint 16 (3)");
             stream.Read(result, 0, 2);
-            Assert.AreEqual(new byte[] { 0x00, 0x00 }, result, "converted lbe uint 16 (4)");
+            ClassicAssert.AreEqual(new byte[] { 0x00, 0x00 }, result, "converted lbe uint 16 (4)");
         }
 
         [Test]
@@ -854,13 +855,13 @@ namespace Ch.Elca.Iiop.Tests
             cdrIn.ConfigStream(STREAM_BIG_ENDIAN_FLAG, new GiopVersion(1, 2));
 
             System.Int32 result = cdrIn.ReadLong();
-            Assert.AreEqual((int)1, result, "converted wbe int 32");
+            ClassicAssert.AreEqual((int)1, result, "converted wbe int 32");
             result = cdrIn.ReadLong();
-            Assert.AreEqual((int)258, result, "converted wbe int 32 (2)");
+            ClassicAssert.AreEqual((int)258, result, "converted wbe int 32 (2)");
             result = cdrIn.ReadLong();
-            Assert.AreEqual(Int32.MaxValue, result, "converted wbe int 32 (3)");
+            ClassicAssert.AreEqual(Int32.MaxValue, result, "converted wbe int 32 (3)");
             result = cdrIn.ReadLong();
-            Assert.AreEqual(Int32.MinValue, result, "converted wbe int 32 (4)");
+            ClassicAssert.AreEqual(Int32.MinValue, result, "converted wbe int 32 (4)");
         }
 
         [Test]
@@ -874,13 +875,13 @@ namespace Ch.Elca.Iiop.Tests
             cdrIn.ConfigStream(STREAM_LITTLE_ENDIAN_FLAG, new GiopVersion(1, 2));
 
             System.Int32 result = cdrIn.ReadLong();
-            Assert.AreEqual((int)1, result, "converted wbe int 32");
+            ClassicAssert.AreEqual((int)1, result, "converted wbe int 32");
             result = cdrIn.ReadLong();
-            Assert.AreEqual((int)258, result, "converted wbe int 32 (2)");
+            ClassicAssert.AreEqual((int)258, result, "converted wbe int 32 (2)");
             result = cdrIn.ReadLong();
-            Assert.AreEqual(Int32.MaxValue, result, "converted wbe int 32 (3)");
+            ClassicAssert.AreEqual(Int32.MaxValue, result, "converted wbe int 32 (3)");
             result = cdrIn.ReadLong();
-            Assert.AreEqual(Int32.MinValue, result, "converted wbe int 32 (4)");
+            ClassicAssert.AreEqual(Int32.MinValue, result, "converted wbe int 32 (4)");
         }
 
         [Test]
@@ -895,13 +896,13 @@ namespace Ch.Elca.Iiop.Tests
             stream.Seek(0, SeekOrigin.Begin);
             byte[] result = new byte[4];
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 0, 0, 0, 1 }, result, "converted wbe int 32");
+            ClassicAssert.AreEqual(new byte[] { 0, 0, 0, 1 }, result, "converted wbe int 32");
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 0, 0, 1, 2 }, result, "converted wbe int 32 (2)");
+            ClassicAssert.AreEqual(new byte[] { 0, 0, 1, 2 }, result, "converted wbe int 32 (2)");
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 0x7F, 0xFF, 0xFF, 0xFF }, result, "converted wbe int 32 (3)");
+            ClassicAssert.AreEqual(new byte[] { 0x7F, 0xFF, 0xFF, 0xFF }, result, "converted wbe int 32 (3)");
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 0x80, 0x00, 0x00, 0x00 }, result, "converted wbe int 32 (4)");
+            ClassicAssert.AreEqual(new byte[] { 0x80, 0x00, 0x00, 0x00 }, result, "converted wbe int 32 (4)");
         }
 
         [Test]
@@ -916,13 +917,13 @@ namespace Ch.Elca.Iiop.Tests
             stream.Seek(0, SeekOrigin.Begin);
             byte[] result = new byte[4];
             stream.Read(result, 0, 4);
-            Assert.AreEqual( new byte[] { 1, 0, 0, 0 }, result,"converted lbe int 32");
+            ClassicAssert.AreEqual( new byte[] { 1, 0, 0, 0 }, result,"converted lbe int 32");
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 2, 1, 0, 0 }, result, "converted lbe int 32 (2)");
+            ClassicAssert.AreEqual(new byte[] { 2, 1, 0, 0 }, result, "converted lbe int 32 (2)");
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 0xFF, 0xFF, 0xFF, 0x7F }, result, "converted lbe int 32 (3)");
+            ClassicAssert.AreEqual(new byte[] { 0xFF, 0xFF, 0xFF, 0x7F }, result, "converted lbe int 32 (3)");
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 0x00, 0x00, 0x00, 0x80 }, result, "converted lbe int 32 (4)");
+            ClassicAssert.AreEqual(new byte[] { 0x00, 0x00, 0x00, 0x80 }, result, "converted lbe int 32 (4)");
         }
 
         [Test]
@@ -936,13 +937,13 @@ namespace Ch.Elca.Iiop.Tests
             cdrIn.ConfigStream(STREAM_BIG_ENDIAN_FLAG, new GiopVersion(1, 2));
 
             System.UInt32 result = cdrIn.ReadULong();
-            Assert.AreEqual((uint)1, result,"converted wbe uint 32");
+            ClassicAssert.AreEqual((uint)1, result,"converted wbe uint 32");
             result = cdrIn.ReadULong();
-            Assert.AreEqual((uint)258, result,"converted wbe uint 32 (2)");
+            ClassicAssert.AreEqual((uint)258, result,"converted wbe uint 32 (2)");
             result = cdrIn.ReadULong();
-            Assert.AreEqual(UInt32.MaxValue, result, "converted wbe uint 32 (3)");
+            ClassicAssert.AreEqual(UInt32.MaxValue, result, "converted wbe uint 32 (3)");
             result = cdrIn.ReadULong();
-            Assert.AreEqual(UInt32.MinValue, result,"converted wbe uint 32 (4)");
+            ClassicAssert.AreEqual(UInt32.MinValue, result,"converted wbe uint 32 (4)");
         }
 
         [Test]
@@ -956,13 +957,13 @@ namespace Ch.Elca.Iiop.Tests
             cdrIn.ConfigStream(STREAM_LITTLE_ENDIAN_FLAG, new GiopVersion(1, 2));
 
             System.UInt32 result = cdrIn.ReadULong();
-            Assert.AreEqual((uint)1, result, "converted wbe uint 32");
+            ClassicAssert.AreEqual((uint)1, result, "converted wbe uint 32");
             result = cdrIn.ReadULong();
-            Assert.AreEqual((uint)258, result, "converted wbe uint 32 (2)");
+            ClassicAssert.AreEqual((uint)258, result, "converted wbe uint 32 (2)");
             result = cdrIn.ReadULong();
-            Assert.AreEqual(UInt32.MaxValue, result, "converted wbe uint 32 (3)");
+            ClassicAssert.AreEqual(UInt32.MaxValue, result, "converted wbe uint 32 (3)");
             result = cdrIn.ReadULong();
-            Assert.AreEqual(UInt32.MinValue, result, "converted wbe uint 32 (4)");
+            ClassicAssert.AreEqual(UInt32.MinValue, result, "converted wbe uint 32 (4)");
         }
 
         [Test]
@@ -977,13 +978,13 @@ namespace Ch.Elca.Iiop.Tests
             stream.Seek(0, SeekOrigin.Begin);
             byte[] result = new byte[4];
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 0, 0, 0, 1 }, result, "converted wbe uint 32");
+            ClassicAssert.AreEqual(new byte[] { 0, 0, 0, 1 }, result, "converted wbe uint 32");
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 0, 0, 1, 2 }, result, "converted wbe uint 32 (2)");
+            ClassicAssert.AreEqual(new byte[] { 0, 0, 1, 2 }, result, "converted wbe uint 32 (2)");
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }, result, "converted wbe uint 32 (3)");
+            ClassicAssert.AreEqual(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }, result, "converted wbe uint 32 (3)");
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 0x00, 0x00, 0x00, 0x00 }, result, "converted wbe uint 32 (4)");
+            ClassicAssert.AreEqual(new byte[] { 0x00, 0x00, 0x00, 0x00 }, result, "converted wbe uint 32 (4)");
         }
 
         [Test]
@@ -998,13 +999,13 @@ namespace Ch.Elca.Iiop.Tests
             stream.Seek(0, SeekOrigin.Begin);
             byte[] result = new byte[4];
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 1, 0, 0, 0 }, result, "converted lbe uint 32");
+            ClassicAssert.AreEqual(new byte[] { 1, 0, 0, 0 }, result, "converted lbe uint 32");
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 2, 1, 0, 0 }, result,"converted lbe uint 32 (2)");
+            ClassicAssert.AreEqual(new byte[] { 2, 1, 0, 0 }, result,"converted lbe uint 32 (2)");
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }, result,"converted lbe uint 32 (3)");
+            ClassicAssert.AreEqual(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }, result,"converted lbe uint 32 (3)");
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 0x00, 0x00, 0x00, 0x00 }, result, "converted lbe uint 32 (4)");
+            ClassicAssert.AreEqual(new byte[] { 0x00, 0x00, 0x00, 0x00 }, result, "converted lbe uint 32 (4)");
         }
 
         [Test]
@@ -1017,13 +1018,13 @@ namespace Ch.Elca.Iiop.Tests
             CdrInputStreamImpl cdrIn = new CdrInputStreamImpl(stream);
             cdrIn.ConfigStream(STREAM_BIG_ENDIAN_FLAG, new GiopVersion(1, 2));
             System.Int64 result = cdrIn.ReadLongLong();
-            Assert.AreEqual( 1, result,"converted wbe int 64");
+            ClassicAssert.AreEqual( 1, result,"converted wbe int 64");
             result = cdrIn.ReadLongLong();
-            Assert.AreEqual(258, result, "converted wbe int 64 (2)");
+            ClassicAssert.AreEqual(258, result, "converted wbe int 64 (2)");
             result = cdrIn.ReadLongLong();
-            Assert.AreEqual(Int64.MaxValue, result, "converted wbe int 64 (3)");
+            ClassicAssert.AreEqual(Int64.MaxValue, result, "converted wbe int 64 (3)");
             result = cdrIn.ReadLongLong();
-            Assert.AreEqual(Int64.MinValue, result, "converted wbe int 64 (4)");
+            ClassicAssert.AreEqual(Int64.MinValue, result, "converted wbe int 64 (4)");
         }
 
         [Test]
@@ -1037,13 +1038,13 @@ namespace Ch.Elca.Iiop.Tests
             cdrIn.ConfigStream(STREAM_LITTLE_ENDIAN_FLAG, new GiopVersion(1, 2));
 
             System.Int64 result = cdrIn.ReadLongLong();
-            Assert.AreEqual((long)1, result, "converted wbe int");
+            ClassicAssert.AreEqual((long)1, result, "converted wbe int");
             result = cdrIn.ReadLongLong();
-            Assert.AreEqual((long)258, result,"converted wbe int (2)");
+            ClassicAssert.AreEqual((long)258, result,"converted wbe int (2)");
             result = cdrIn.ReadLongLong();
-            Assert.AreEqual(Int64.MaxValue, result, "converted wbe int (3)");
+            ClassicAssert.AreEqual(Int64.MaxValue, result, "converted wbe int (3)");
             result = cdrIn.ReadLongLong();
-            Assert.AreEqual(Int64.MinValue, result, "converted wbe int (4)");
+            ClassicAssert.AreEqual(Int64.MinValue, result, "converted wbe int (4)");
         }
 
         [Test]
@@ -1058,13 +1059,13 @@ namespace Ch.Elca.Iiop.Tests
             stream.Seek(0, SeekOrigin.Begin);
             byte[] result = new byte[8];
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 0, 0, 0, 0, 0, 0, 0, 1 }, result, "converted wbe int");
+            ClassicAssert.AreEqual(new byte[] { 0, 0, 0, 0, 0, 0, 0, 1 }, result, "converted wbe int");
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 0, 0, 0, 0, 0, 0, 1, 2 }, result, "converted wbe int (2)");
+            ClassicAssert.AreEqual(new byte[] { 0, 0, 0, 0, 0, 0, 1, 2 }, result, "converted wbe int (2)");
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 0x7F, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, result, "converted wbe int (3)");
+            ClassicAssert.AreEqual(new byte[] { 0x7F, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, result, "converted wbe int (3)");
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }, result, "converted wbe int (4)");
+            ClassicAssert.AreEqual(new byte[] { 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }, result, "converted wbe int (4)");
         }
 
         [Test]
@@ -1079,13 +1080,13 @@ namespace Ch.Elca.Iiop.Tests
             stream.Seek(0, SeekOrigin.Begin);
             byte[] result = new byte[8];
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 1, 0, 0, 0, 0, 0, 0, 0 }, result, "converted lbe int64");
+            ClassicAssert.AreEqual(new byte[] { 1, 0, 0, 0, 0, 0, 0, 0 }, result, "converted lbe int64");
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 2, 1, 0, 0, 0, 0, 0, 0 }, result, "converted lbe int64 (2)");
+            ClassicAssert.AreEqual(new byte[] { 2, 1, 0, 0, 0, 0, 0, 0 }, result, "converted lbe int64 (2)");
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x7F }, result, "converted lbe int64 (3)");
+            ClassicAssert.AreEqual(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x7F }, result, "converted lbe int64 (3)");
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80 }, result, "converted lbe int64 (4)");
+            ClassicAssert.AreEqual(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80 }, result, "converted lbe int64 (4)");
         }
 
         [Test]
@@ -1098,13 +1099,13 @@ namespace Ch.Elca.Iiop.Tests
             CdrInputStreamImpl cdrIn = new CdrInputStreamImpl(stream);
             cdrIn.ConfigStream(STREAM_BIG_ENDIAN_FLAG, new GiopVersion(1, 2));
             System.UInt64 result = cdrIn.ReadULongLong();
-            Assert.AreEqual(1, result, "converted wbe uint 64");
+            ClassicAssert.AreEqual(1, result, "converted wbe uint 64");
             result = cdrIn.ReadULongLong();
-            Assert.AreEqual(258, result, "converted wbe uint 64 (2)");
+            ClassicAssert.AreEqual(258, result, "converted wbe uint 64 (2)");
             result = cdrIn.ReadULongLong();
-            Assert.AreEqual(UInt64.MaxValue, result,"converted wbe uint 64 (3)");
+            ClassicAssert.AreEqual(UInt64.MaxValue, result,"converted wbe uint 64 (3)");
             result = cdrIn.ReadULongLong();
-            Assert.AreEqual(UInt64.MinValue, result, "converted wbe uint 64 (4)");
+            ClassicAssert.AreEqual(UInt64.MinValue, result, "converted wbe uint 64 (4)");
         }
 
         [Test]
@@ -1118,13 +1119,13 @@ namespace Ch.Elca.Iiop.Tests
             cdrIn.ConfigStream(STREAM_LITTLE_ENDIAN_FLAG, new GiopVersion(1, 2));
 
             System.UInt64 result = cdrIn.ReadULongLong();
-            Assert.AreEqual((ulong)1, result,"converted wbe uint");
+            ClassicAssert.AreEqual((ulong)1, result,"converted wbe uint");
             result = cdrIn.ReadULongLong();
-            Assert.AreEqual((ulong)258, result,"converted wbe uint (2)");
+            ClassicAssert.AreEqual((ulong)258, result,"converted wbe uint (2)");
             result = cdrIn.ReadULongLong();
-            Assert.AreEqual(UInt64.MaxValue, result,"converted wbe uint (3)" );
+            ClassicAssert.AreEqual(UInt64.MaxValue, result,"converted wbe uint (3)" );
             result = cdrIn.ReadULongLong();
-            Assert.AreEqual(UInt64.MinValue, result,"converted wbe uint (4)");
+            ClassicAssert.AreEqual(UInt64.MinValue, result,"converted wbe uint (4)");
         }
 
         [Test]
@@ -1139,13 +1140,13 @@ namespace Ch.Elca.Iiop.Tests
             stream.Seek(0, SeekOrigin.Begin);
             byte[] result = new byte[8];
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 0, 0, 0, 0, 0, 0, 0, 1 }, result, "converted wbe uint");
+            ClassicAssert.AreEqual(new byte[] { 0, 0, 0, 0, 0, 0, 0, 1 }, result, "converted wbe uint");
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 0, 0, 0, 0, 0, 0, 1, 2 }, result,"converted wbe uint (2)");
+            ClassicAssert.AreEqual(new byte[] { 0, 0, 0, 0, 0, 0, 1, 2 }, result,"converted wbe uint (2)");
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, result, "converted wbe uint (3)");
+            ClassicAssert.AreEqual(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, result, "converted wbe uint (3)");
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }, result, "converted wbe uint (4)");
+            ClassicAssert.AreEqual(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }, result, "converted wbe uint (4)");
         }
 
         [Test]
@@ -1160,13 +1161,13 @@ namespace Ch.Elca.Iiop.Tests
             stream.Seek(0, SeekOrigin.Begin);
             byte[] result = new byte[8];
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 1, 0, 0, 0, 0, 0, 0, 0 }, result, "converted lbe uint64");
+            ClassicAssert.AreEqual(new byte[] { 1, 0, 0, 0, 0, 0, 0, 0 }, result, "converted lbe uint64");
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 2, 1, 0, 0, 0, 0, 0, 0 }, result, "converted lbe uint64 (2)");
+            ClassicAssert.AreEqual(new byte[] { 2, 1, 0, 0, 0, 0, 0, 0 }, result, "converted lbe uint64 (2)");
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, result, "converted lbe uint64 (3)");
+            ClassicAssert.AreEqual(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, result, "converted lbe uint64 (3)");
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }, result, "converted lbe uint64 (4)");
+            ClassicAssert.AreEqual(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }, result, "converted lbe uint64 (4)");
 
         }
 
@@ -1182,13 +1183,13 @@ namespace Ch.Elca.Iiop.Tests
             cdrIn.ConfigStream(STREAM_BIG_ENDIAN_FLAG, new GiopVersion(1, 2));
 
             System.Single result = cdrIn.ReadFloat();
-            Assert.AreEqual((float)1.0f, result, "converted wbe single");
+            ClassicAssert.AreEqual((float)1.0f, result, "converted wbe single");
             result = cdrIn.ReadFloat();
-            Assert.AreEqual((float)0.01f, result, "converted wbe single (2)");
+            ClassicAssert.AreEqual((float)0.01f, result, "converted wbe single (2)");
             result = cdrIn.ReadFloat();
-            Assert.AreEqual(Single.MaxValue, result, "converted wbe single (3)");
+            ClassicAssert.AreEqual(Single.MaxValue, result, "converted wbe single (3)");
             result = cdrIn.ReadFloat();
-            Assert.AreEqual(Single.MinValue, result, "converted wbe single (4)");
+            ClassicAssert.AreEqual(Single.MinValue, result, "converted wbe single (4)");
         }
 
         [Test]
@@ -1202,13 +1203,13 @@ namespace Ch.Elca.Iiop.Tests
             cdrIn.ConfigStream(STREAM_LITTLE_ENDIAN_FLAG, new GiopVersion(1, 2));
 
             System.Single result = cdrIn.ReadFloat();
-            Assert.AreEqual((float)1.0f, result, "converted wbe single");
+            ClassicAssert.AreEqual((float)1.0f, result, "converted wbe single");
             result = cdrIn.ReadFloat();
-            Assert.AreEqual((float)0.01f, result, "converted wbe single (2)");
+            ClassicAssert.AreEqual((float)0.01f, result, "converted wbe single (2)");
             result = cdrIn.ReadFloat();
-            Assert.AreEqual(Single.MaxValue, result, "converted wbe single (3)");
+            ClassicAssert.AreEqual(Single.MaxValue, result, "converted wbe single (3)");
             result = cdrIn.ReadFloat();
-            Assert.AreEqual(Single.MinValue, result, "converted wbe single (4)");
+            ClassicAssert.AreEqual(Single.MinValue, result, "converted wbe single (4)");
         }
 
         [Test]
@@ -1223,13 +1224,13 @@ namespace Ch.Elca.Iiop.Tests
             stream.Seek(0, SeekOrigin.Begin);
             byte[] result = new byte[4];
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 0x3F, 0x80, 0x00, 0x00 }, result, "converted wbe single");
+            ClassicAssert.AreEqual(new byte[] { 0x3F, 0x80, 0x00, 0x00 }, result, "converted wbe single");
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 0x3C, 0x23, 0xD7, 0x0A }, result, "converted wbe single (2)");
+            ClassicAssert.AreEqual(new byte[] { 0x3C, 0x23, 0xD7, 0x0A }, result, "converted wbe single (2)");
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 0x7F, 0x7F, 0xFF, 0xFF }, result, "converted wbe single (3)");
+            ClassicAssert.AreEqual(new byte[] { 0x7F, 0x7F, 0xFF, 0xFF }, result, "converted wbe single (3)");
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 0xFF, 0x7F, 0xFF, 0xFF }, result, "converted wbe single (4)");
+            ClassicAssert.AreEqual(new byte[] { 0xFF, 0x7F, 0xFF, 0xFF }, result, "converted wbe single (4)");
         }
 
         [Test]
@@ -1244,13 +1245,13 @@ namespace Ch.Elca.Iiop.Tests
             stream.Seek(0, SeekOrigin.Begin);
             byte[] result = new byte[4];
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 0x00, 0x00, 0x80, 0x3F }, result, "converted lbe single");
+            ClassicAssert.AreEqual(new byte[] { 0x00, 0x00, 0x80, 0x3F }, result, "converted lbe single");
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 0x0A, 0xD7, 0x23, 0x3C }, result, "converted lbe single (2)");
+            ClassicAssert.AreEqual(new byte[] { 0x0A, 0xD7, 0x23, 0x3C }, result, "converted lbe single (2)");
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 0xFF, 0xFF, 0x7F, 0x7F }, result, "converted lbe single (3)");
+            ClassicAssert.AreEqual(new byte[] { 0xFF, 0xFF, 0x7F, 0x7F }, result, "converted lbe single (3)");
             stream.Read(result, 0, 4);
-            Assert.AreEqual(new byte[] { 0xFF, 0xFF, 0x7F, 0xFF }, result, "converted lbe single (4)");
+            ClassicAssert.AreEqual(new byte[] { 0xFF, 0xFF, 0x7F, 0xFF }, result, "converted lbe single (4)");
         }
 
         [Test]
@@ -1263,13 +1264,13 @@ namespace Ch.Elca.Iiop.Tests
             CdrInputStreamImpl cdrIn = new CdrInputStreamImpl(stream);
             cdrIn.ConfigStream(STREAM_BIG_ENDIAN_FLAG, new GiopVersion(1, 2));
             double result = cdrIn.ReadDouble();
-            Assert.AreEqual(1.0, result, "converted wbe double");
+            ClassicAssert.AreEqual(1.0, result, "converted wbe double");
             result = cdrIn.ReadDouble();
-            Assert.AreEqual(0.01, result, "converted wbe double (2)");
+            ClassicAssert.AreEqual(0.01, result, "converted wbe double (2)");
             result = cdrIn.ReadDouble();
-            Assert.AreEqual(Double.MaxValue, result, "converted wbe double (3)");
+            ClassicAssert.AreEqual(Double.MaxValue, result, "converted wbe double (3)");
             result = cdrIn.ReadDouble();
-            Assert.AreEqual(Double.MinValue, result, "converted wbe double (4)");
+            ClassicAssert.AreEqual(Double.MinValue, result, "converted wbe double (4)");
         }
 
         [Test]
@@ -1282,13 +1283,13 @@ namespace Ch.Elca.Iiop.Tests
             CdrInputStreamImpl cdrIn = new CdrInputStreamImpl(stream);
             cdrIn.ConfigStream(STREAM_LITTLE_ENDIAN_FLAG, new GiopVersion(1, 2));
             double result = cdrIn.ReadDouble();
-            Assert.AreEqual(1.0, result, "converted lbe double");
+            ClassicAssert.AreEqual(1.0, result, "converted lbe double");
             result = cdrIn.ReadDouble();
-            Assert.AreEqual(0.01, result, "converted lbe double (2)");
+            ClassicAssert.AreEqual(0.01, result, "converted lbe double (2)");
             result = cdrIn.ReadDouble();
-            Assert.AreEqual(Double.MaxValue, result, "converted lbe double (3)");
+            ClassicAssert.AreEqual(Double.MaxValue, result, "converted lbe double (3)");
             result = cdrIn.ReadDouble();
-            Assert.AreEqual(Double.MinValue, result, "converted lbe double (4)");
+            ClassicAssert.AreEqual(Double.MinValue, result, "converted lbe double (4)");
         }
 
         [Test]
@@ -1303,13 +1304,13 @@ namespace Ch.Elca.Iiop.Tests
             stream.Seek(0, SeekOrigin.Begin);
             byte[] result = new byte[8];
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 0x3F, 0xF0, 0, 0, 0, 0, 0, 0 }, result, "converted wbe double");
+            ClassicAssert.AreEqual(new byte[] { 0x3F, 0xF0, 0, 0, 0, 0, 0, 0 }, result, "converted wbe double");
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 0x3F, 0x84, 0x7A, 0xE1, 0x47, 0xAE, 0x14, 0x7B }, result, "converted wbe double (2)");
+            ClassicAssert.AreEqual(new byte[] { 0x3F, 0x84, 0x7A, 0xE1, 0x47, 0xAE, 0x14, 0x7B }, result, "converted wbe double (2)");
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 0x7F, 0xEF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, result, "converted wbe double (3)");
+            ClassicAssert.AreEqual(new byte[] { 0x7F, 0xEF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, result, "converted wbe double (3)");
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 0xFF, 0xEF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, result, "converted wbe double (4)");
+            ClassicAssert.AreEqual(new byte[] { 0xFF, 0xEF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, result, "converted wbe double (4)");
         }
 
         [Test]
@@ -1324,13 +1325,13 @@ namespace Ch.Elca.Iiop.Tests
             stream.Seek(0, SeekOrigin.Begin);
             byte[] result = new byte[8];
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 0, 0, 0, 0, 0, 0, 0xF0, 0x3F }, result, "converted lbe double");
+            ClassicAssert.AreEqual(new byte[] { 0, 0, 0, 0, 0, 0, 0xF0, 0x3F }, result, "converted lbe double");
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 0x7B, 0x14, 0xAE, 0x47, 0xE1, 0x7A, 0x84, 0x3F }, result, "converted lbe double (2)");
+            ClassicAssert.AreEqual(new byte[] { 0x7B, 0x14, 0xAE, 0x47, 0xE1, 0x7A, 0x84, 0x3F }, result, "converted lbe double (2)");
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xEF, 0x7F }, result, "converted lbe double (3)");
+            ClassicAssert.AreEqual(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xEF, 0x7F }, result, "converted lbe double (3)");
             stream.Read(result, 0, 8);
-            Assert.AreEqual(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xEF, 0xFF }, result, "converted lbe double (4)");
+            ClassicAssert.AreEqual(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xEF, 0xFF }, result, "converted lbe double (4)");
         }
 
 
@@ -1342,7 +1343,7 @@ namespace Ch.Elca.Iiop.Tests
             cdrIn.ConfigStream(STREAM_BIG_ENDIAN_FLAG, new GiopVersion(1, 2));
             cdrIn.WCharSet = (int)WCharSet.UTF16;
             string result = cdrIn.ReadWString();
-            Assert.AreEqual("Test", result, "converted wbe string");
+            ClassicAssert.AreEqual("Test", result, "converted wbe string");
         }
 
         [Test]
@@ -1353,7 +1354,7 @@ namespace Ch.Elca.Iiop.Tests
             cdrIn.ConfigStream(STREAM_LITTLE_ENDIAN_FLAG, new GiopVersion(1, 2));
             cdrIn.WCharSet = (int)WCharSet.UTF16;
             string result = cdrIn.ReadWString();
-            Assert.AreEqual("Test", result, "converted lbe string");
+            ClassicAssert.AreEqual("Test", result, "converted lbe string");
         }
 
         [Test]
@@ -1366,7 +1367,7 @@ namespace Ch.Elca.Iiop.Tests
             stream.Seek(0, SeekOrigin.Begin);
             byte[] result = new byte[12];
             stream.Read(result, 0, 12);
-            Assert.AreEqual(new byte[] { 0, 0, 0, 8, 0, 84, 0, 101, 0, 115, 0, 116 }, result, "converted wbe string");
+            ClassicAssert.AreEqual(new byte[] { 0, 0, 0, 8, 0, 84, 0, 101, 0, 115, 0, 116 }, result, "converted wbe string");
         }
 
         [Test]
@@ -1379,7 +1380,7 @@ namespace Ch.Elca.Iiop.Tests
             stream.Seek(0, SeekOrigin.Begin);
             byte[] result = new byte[14];
             stream.Read(result, 0, 14);
-            Assert.AreEqual(new byte[] { 10, 0, 0, 0, 0xFF, 0xFE, 84, 0, 101, 0, 115, 0, 116, 0 }, result, "converted lbe string");
+            ClassicAssert.AreEqual(new byte[] { 10, 0, 0, 0, 0xFF, 0xFE, 84, 0, 101, 0, 115, 0, 116, 0 }, result, "converted lbe string");
         }
 
 

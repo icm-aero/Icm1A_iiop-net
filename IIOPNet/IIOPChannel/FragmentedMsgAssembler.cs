@@ -34,6 +34,7 @@ using System.IO;
 using System.Diagnostics;
 using Ch.Elca.Iiop.Cdr;
 using Ch.Elca.Iiop.Util;
+using NUnit.Framework.Legacy;
 
 namespace Ch.Elca.Iiop {
  
@@ -363,8 +364,8 @@ namespace Ch.Elca.Iiop.Tests {
             CdrInputStreamImpl inStream = new CdrInputStreamImpl(msgStream);
             GiopHeader header = new GiopHeader(inStream);
  
-            Assert.AreEqual(GiopMsgTypes.Request, header.GiopType);
-            Assert.AreEqual(version, header.Version);
+            ClassicAssert.AreEqual(GiopMsgTypes.Request, header.GiopType);
+            ClassicAssert.AreEqual(version, header.Version);
  
             uint contentLength = 0;
             uint msgReqId = 0;
@@ -380,11 +381,11 @@ namespace Ch.Elca.Iiop.Tests {
                 msgReqId = inStream.ReadULong();
             }
  
-            Assert.AreEqual(contentLength, header.ContentMsgLength);
-            Assert.AreEqual(endianFlags, header.GiopFlags);
+            ClassicAssert.AreEqual(contentLength, header.ContentMsgLength);
+            ClassicAssert.AreEqual(endianFlags, header.GiopFlags);
 
             for (int i = 0; i < expectedContentLength; i++) {
-                Assert.AreEqual(i % 255, inStream.ReadOctet());
+                ClassicAssert.AreEqual(i % 255, inStream.ReadOctet());
             }
  
         }
